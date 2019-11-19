@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html, body, #jumbo, .overlay {
+    height: 100%;
+    width: 100%;
+}
+
+header {
+    height: 50px;
+    background: white;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 330px;
+    color: white;
+    font-size: 3em;
+    font-style: italic;
+    font-weight: lighter;
+    opacity: 100%;
+}
+
+#jumbo {
+    background: url('assets/reichstag.jpg');
+    background-size: cover;
+}
+
+#logo {
+    position: absolute;
+    left: 25px;
+    height: 50px;
+    width: 120px;
+    float: left;
+    background: green;
+    background: url('assets/sprint.svg') no-repeat center;
+    background-size: 80%;
+}
+
+#menu {
+    float: right;
+    width: 50px;
+    height: 50px;
+    background: url('assets/hamburgermenu.svg') no-repeat center;
+    background-size: 45%;
+}
+
+.overlay {
+    background: rgba(0,0,0,0.3);
+}
