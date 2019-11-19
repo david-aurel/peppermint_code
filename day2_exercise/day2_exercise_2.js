@@ -13,3 +13,15 @@ var a = {
 //    France: 'Paris',
 //    USA: 'New York'
 // }
+
+var b = {};
+
+for (var i in a) {
+    //accessing the value of a through a[i] and assigning it to the key of b
+    //accessing the key of a through i and assigning it to the value of b
+    //I have no idea why i gives me the keys but for some reason it does?!
+    b[a[i]] = i;
+}
+
+// logging the result for testing
+console.log(b);
