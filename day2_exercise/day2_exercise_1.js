@@ -1,5 +1,4 @@
 //Write a function named logType that expects a single argument and logs a different string depending on the type/value of the argument that is passed to it. The string it logs should be one of the following:
-//
 // "undefined!"
 // "null!"
 // "number!"
@@ -11,14 +10,14 @@
 // "array!"
 // "I have no idea!"
 
-function logType (val) {
+function logType(val) {
     if (typeof val == "undefined") {
         console.log("undefined!");
     } else if (val == null) {
         console.log("null!");
     } else if (Array.isArray(val)) {
         console.log("array!");
-    } else if (typeof val == 'object') {
+    } else if (typeof val == "object") {
         console.log("object!");
     } else if (typeof val == "function") {
         console.log("function!");
@@ -37,14 +36,13 @@ function logType (val) {
     }
 }
 
-
 //calling the function with different arguments to test if it's working
 logType(undefined);
 logType(null);
 logType(1);
 logType(NaN);
-logType('string');
+logType("string");
 logType(true);
 logType(function fn() {});
-logType({a: 'a'});
+logType({ a: "a" });
 logType([1, 2, 3]);
