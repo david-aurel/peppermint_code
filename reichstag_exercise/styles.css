@@ -3,7 +3,10 @@
     margin: 0;
 }
 
-html, body, #jumbo, .overlay {
+html,
+body,
+#image,
+.overlay {
     height: 100%;
     width: 100%;
 }
@@ -13,15 +16,23 @@ header {
     background: white;
 }
 
-#jumbo {
+#image {
     position: absolute;
     background: url('assets/reichstag.jpg') no-repeat;
     background-size: 100%;
 }
 
+#image::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+}
+
 #logo {
     position: absolute;
-    left: 25px;
+    left: 1%;
     height: 50px;
     width: 120px;
     float: left;
@@ -38,33 +49,29 @@ header {
     background-size: 45%;
 }
 
-.overlay {
-    background: rgba(0,0,0,0.3);
-    background-size: 100%;
+.h1wrapper {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.h1wrapper {
-    background: red;
-    display: inline;
-    position: absolute;
-    top: 300px;
-    text-align: center;
-}
 h1 {
     color: white;
-    font-size: 3em;
     font-style: italic;
     font-weight: lighter;
-    opacity: 100%;
+    font-size: 40px;
 }
 
-
 .button {
-    position: absolute;
-    text-align: right;
-    display: inline;
-    background: orange;
+    width: 250px;
+    background: rgb(255, 200, 50);
     border: 2px solid chocolate;
     color: chocolate;
-    font-size: 30px;
+    font-size: 25px;
+    border-radius: 40px;
+    padding: 5px 50px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
