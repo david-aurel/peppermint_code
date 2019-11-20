@@ -17,14 +17,18 @@ function fn(num) {
         return num;
         // if nothing of the above is true
     } else {
+        //declare a variable for the count of the multiplication
+        let count = 0;
         //as long as the num is less or equal to a million
         while (num < 1000000) {
             //increment number by multiplying it with ten over and over again
             num *= 10;
+            //increment count each time the loop runs
+            count++;
         }
-        //log and return result
-        console.log(num);
-        return num;
+        //log and return results
+        console.log('num:' + num + ', count:', count);
+        return count;
     }
 }
 
