@@ -28,7 +28,7 @@ function fn(num) {
         }
         //log and return results
         console.log('num:' + num + ', count:', count);
-        return count;
+        return num;
     }
 }
 
