@@ -13,19 +13,10 @@ header {
     background: white;
 }
 
-h1 {
-    text-align: center;
-    padding-top: 330px;
-    color: white;
-    font-size: 3em;
-    font-style: italic;
-    font-weight: lighter;
-    opacity: 100%;
-}
-
 #jumbo {
-    background: url('assets/reichstag.jpg');
-    background-size: cover;
+    position: absolute;
+    background: url('assets/reichstag.jpg') no-repeat;
+    background-size: 100%;
 }
 
 #logo {
@@ -49,4 +40,31 @@ h1 {
 
 .overlay {
     background: rgba(0,0,0,0.3);
+    background-size: 100%;
+}
+
+.h1wrapper {
+    background: red;
+    display: inline;
+    position: absolute;
+    top: 300px;
+    text-align: center;
+}
+h1 {
+    color: white;
+    font-size: 3em;
+    font-style: italic;
+    font-weight: lighter;
+    opacity: 100%;
+}
+
+
+.button {
+    position: absolute;
+    text-align: right;
+    display: inline;
+    background: orange;
+    border: 2px solid chocolate;
+    color: chocolate;
+    font-size: 30px;
 }
