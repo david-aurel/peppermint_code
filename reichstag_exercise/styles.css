@@ -5,21 +5,42 @@
 
 html,
 body,
-#image,
-.overlay {
+#image {
     height: 100%;
     width: 100%;
 }
 
+.jumbo {
+    position: relative;
+    height: 700px;
+}
+
+.info {
+    height: 500px;
+    width: 100%;
+}
+
+.data {
+    display: inline-block;
+    height: 100px;
+    width: 30%;
+    background: blue;
+    margin: 40px;
+}
+.dataWrapper {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
 header {
     height: 50px;
     background: white;
 }
 
 #image {
-    position: absolute;
+    height: 100%;
     background: url('assets/reichstag.jpg') no-repeat;
-    background-size: 100%;
+    background-size: cover;
 }
 
 #image::before {
@@ -51,7 +72,7 @@ header {
 
 .h1wrapper {
     position: absolute;
-    top: 65%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
