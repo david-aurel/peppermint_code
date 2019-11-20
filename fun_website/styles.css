@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    line-height: 1.5em;
+}
+
+body {
+    margin: 50px;
+}
+.author {
+    font-weight: bold;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+img,
+main {
+    border: 5px dotted rosybrown;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+#lyrics {
+    background: white;
+}
+
+.spongebob {
+    background: rgb(117, 234, 255);
+}
+
+.plankton {
+    background: rgb(255, 92, 92);
+}
+
+.chorus,
+.both {
+    background: rgb(167, 89, 255);
+}
+
+h3 {
+    margin: 0px 20px 20px 0px;
+    font-size: 2em;
+}
+
+.textblock {
+    margin-bottom: 10px;
+}
