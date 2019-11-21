@@ -3,52 +3,15 @@
     margin: 0;
 }
 
+/* header */
 html,
-body,
-#image {
-    height: 100%;
+body {
     width: 100%;
 }
 
-.jumbo {
-    position: relative;
-    height: 700px;
-}
-
-.info {
-    height: 330px;
-    width: 100%;
-}
-
-.data {
-    float: left;
-    height: 100px;
-    width: 50%;
-    margin-top: 5%;
-    overflow: hidden;
-}
-.dataWrapper {
-    height: 300px;
-    width: 80%;
-    margin: 0 auto;
-}
 header {
     height: 50px;
     background: white;
-}
-
-#image {
-    height: 100%;
-    background: url('assets/reichstag.jpg') no-repeat;
-    background-size: cover;
-}
-
-#image::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.25);
 }
 
 #logo {
@@ -70,14 +33,40 @@ header {
     background-size: 45%;
 }
 
+/* jumbo */
+.jumbo {
+    width: 100%;
+    height: 700px;
+    background: blue;
+}
+#image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url('assets/reichstag.jpg') no-repeat;
+    background-size: cover;
+}
+
+#image::before {
+    top: 0;
+    left: 0;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+}
+
 .h1wrapper {
     position: absolute;
+    width: 90%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 h1 {
+    text-align: center;
     color: white;
     font-style: italic;
     font-weight: lighter;
@@ -85,28 +74,54 @@ h1 {
 }
 
 .button {
+    text-align: center;
     width: 250px;
     background: rgb(255, 200, 50);
     border: 2px solid chocolate;
     color: chocolate;
     font-size: 25px;
     border-radius: 40px;
-    padding: 5px 50px;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    padding: 5px 0;
+    margin: 20px auto 0px auto;
+}
+
+.button span {
+    text-align: center;
+}
+/* info section */
+
+.info {
+    width: auto;
+    height: 240px;
+}
+
+.dataWrapper {
+    width: 80%;
+    height: 100%;
+    margin: 20px auto;
+}
+
+.data {
+    float: left;
+    height: auto;
+    width: 47%;
+    margin: 20px 10px;
 }
 
 img {
     width: 10%;
     float: left;
-    margin-bottom: 150px;
-    margin-right: 25px;
+}
+
+.title {
+    font-weight: bold;
 }
 
 .text {
+    display: block;
     padding-right: 5%;
     font-size: 1.1em;
+    padding-left: 14%;
 }
 
 span {
@@ -114,10 +129,7 @@ span {
     text-align: left;
 }
 
-.title {
-    font-weight: bold;
-}
-
+/* footer */
 footer {
     width: 100%;
     height: 30px;
@@ -129,4 +141,58 @@ footer span {
     position: absolute;
     left: 5%;
     padding-top: 5px;
+}
+
+/* responsive */
+@media screen and (min-width: 300px) and (max-width: 400px) {
+    .jumbo {
+        height: 250px;
+    }
+
+    .h1wrapper {
+        top: 29%;
+        width: 70%;
+    }
+
+    h1 {
+        color: white;
+        font-style: italic;
+        font-weight: lighter;
+        font-size: 1.5em;
+    }
+
+    .button {
+        text-align: center;
+        width: 60%;
+        background: rgb(255, 200, 50);
+        border: 2px solid chocolate;
+        color: chocolate;
+        font-size: 1em;
+        border-radius: 20px;
+        padding: 5px 10px;
+        margin: 15px auto 0 auto;
+    }
+
+    .info {
+        height: 500px;
+    }
+
+    .dataWrapper {
+        width: 70%;
+        display: block;
+        height: 500px;
+    }
+
+    .data {
+        width: 100%;
+    }
+
+    img {
+        width: 15%;
+    }
+
+    .text {
+        text-align: center;
+        padding-left: 25%;
+    }
 }
