@@ -2,8 +2,28 @@
 // If the first parameter is an object, it should loop over the object's properties and call the callback for each one. The property value should be the first parameter passed to the callback and the property name should be the second.
 // If the first parameter is an array, it should loop over the array's elements and call the callback for each one. The array element should be the first parameter passed to the callback and the index should be the second.
 
+// declaring each()
+// function each(objOrArr, callback) {
+//     if (Array.isArray(objOrArr)) {
+//         for (val in objOrArr) {
+//             callback(objOrArr[val], val);
+//         }
+//     } else if (typeof objOrArr == 'object') {
+//         for (val in objOrArr) {
+//             callback(objOrArr[val], val);
+//         }
+//     }
+// }
+
+// refactoring each()
+function each2(objOrArr, callback) {
+    for (val in objOrArr) {
+        callback(objOrArr[val], val);
+    }
+}
+
 //calling each() and passing in arguments
-each(
+each2(
     {
         a: 1,
         b: 2
@@ -13,8 +33,6 @@ each(
     }
 ); // logs 'the value of a is 1' and 'the value of b is 2'
 
-each(['a', 'b'], function(val, idx) {
+each2(['a', 'b'], function(val, idx) {
     console.log('The value of item ' + idx + ' is ' + val);
 }); // logs 'the value of item 0 is a' and 'the value of item 1 is b'
-
-// declaring each()
