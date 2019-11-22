@@ -3,23 +3,66 @@
 }
 
 body {
-    padding: 50px;
+    margin: 0;
+}
+
+#head ~ div {
+    background: black;
 }
 
 #head {
-    width: 150px;
-    height: 150px;
-    border: 3px solid tomato;
+    position: absolute;
+    left: 150px;
+    width: 100px;
+    height: 100px;
+    border: 3px solid black;
     border-radius: 50%;
+}
+
+#body {
+    position: absolute;
+    top: 97px;
+    left: 200px;
+    width: 203px;
+    height: 3px;
+    transform: rotate(90deg);
+    transform-origin: left;
 }
 
 #right-arm {
     position: absolute;
-    top: 300px;
+    top: 200px;
     left: 200px;
-    width: 300px;
+    width: 200px;
     height: 3px;
-    background: tomato;
     transform: rotate(-45deg);
     transform-origin: left;
+}
+
+#left-arm {
+    position: absolute;
+    top: 200px;
+    width: 200px;
+    height: 3px;
+    transform: rotate(45deg);
+    transform-origin: right;
+}
+
+#right-leg {
+    position: absolute;
+    top: 300px;
+    left: 200px;
+    width: 200px;
+    height: 3px;
+    transform: rotate(45deg);
+    transform-origin: left;
+}
+
+#left-leg {
+    position: absolute;
+    top: 300px;
+    width: 200px;
+    height: 3px;
+    transform: rotate(-45deg);
+    transform-origin: right;
 }
