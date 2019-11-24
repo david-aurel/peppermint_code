@@ -57,17 +57,16 @@ h1 {
     color: white;
     font-style: italic;
     font-weight: 400;
-    font-size: 5vw;
+    font-size: 30px;
 }
 
 .button {
-    width: 150px;
     background: rgb(255, 200, 50);
     border: 3px solid chocolate;
     color: chocolate;
     font-size: 15px;
     border-radius: 25px;
-    padding: 5px 0;
+    padding: 5px 5%;
     margin: 20px auto 0px auto;
 }
 
@@ -136,5 +135,13 @@ footer span {
         height: auto;
         width: 50%;
         margin: 20px 0;
+    }
+
+    h1 {
+        font-size: 3vw;
+    }
+
+    .button {
+        font-size: 2vw;
     }
 }
