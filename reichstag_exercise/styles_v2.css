@@ -1,0 +1,140 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* header */
+html,
+body {
+    width: 100%;
+}
+
+header {
+    height: 50px;
+    background: white;
+}
+
+#logo {
+    position: absolute;
+    left: 1%;
+    height: 50px;
+    width: 120px;
+    float: left;
+    background: green;
+    background: url('assets/sprint.svg') no-repeat center;
+    background-size: 80%;
+}
+
+#menu {
+    float: right;
+    width: 50px;
+    height: 50px;
+    background: url('assets/hamburgermenu.svg') no-repeat center;
+    background-size: 45%;
+}
+
+/* jumbo */
+.jumbo {
+    position: relative;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.jumbo-img {
+    width: 100%;
+    filter: brightness(80%);
+}
+
+.h1wrapper {
+    text-align: center;
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    color: white;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 5vw;
+}
+
+.button {
+    width: 150px;
+    background: rgb(255, 200, 50);
+    border: 3px solid chocolate;
+    color: chocolate;
+    font-size: 15px;
+    border-radius: 25px;
+    padding: 5px 0;
+    margin: 20px auto 0px auto;
+}
+
+/* info */
+.info {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.25);
+}
+.dataWrapper {
+    width: 100%;
+    margin: 0px auto;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+.data {
+    width: 80%;
+    margin: 40px auto;
+}
+
+.dataWrapper img {
+    width: 35px;
+    float: left;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.text {
+    padding-right: 10%;
+    font-size: 1.1em;
+    padding-left: 50px;
+}
+
+span {
+    display: block;
+    text-align: left;
+}
+
+/* footer */
+
+footer {
+    width: 100%;
+    height: 30px;
+    background: grey;
+    color: white;
+}
+
+footer span {
+    position: absolute;
+    left: 5%;
+    padding-top: 5px;
+}
+
+/* media queries */
+@media (min-width: 768px) {
+    .dataWrapper {
+        padding: 20px 10%;
+        height: 290px;
+    }
+
+    .data {
+        float: left;
+        height: auto;
+        width: 50%;
+        margin: 20px 0;
+    }
+}
