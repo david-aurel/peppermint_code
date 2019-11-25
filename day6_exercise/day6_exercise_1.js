@@ -4,10 +4,10 @@ function changeFont(str) {
     //select all elements
     var elements = document.querySelectorAll(str);
     //iterate trough the collection you get back
-    for (i in elements) {
+    elements.forEach(function(element) {
         //change style
-        elements[i].style.fontStyle = 'italic';
-        elements[i].style.fontWeight = 'bold';
-        elements[i].style.textDecoration = 'underline';
-    }
+        element.style.fontStyle = 'italic';
+        element.style.fontWeight = 'bold';
+        element.style.textDecoration = 'underline';
+    });
 }
