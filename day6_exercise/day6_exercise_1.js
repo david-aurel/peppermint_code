@@ -3,6 +3,7 @@
 function changeFont(str) {
     //select all elements
     var elements = document.querySelectorAll(str);
+
     //iterate trough the collection you get back
     elements.forEach(function(element) {
         //change style

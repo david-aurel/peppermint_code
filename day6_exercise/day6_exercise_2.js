@@ -4,6 +4,7 @@ function selectClass(str) {
     // declare empty array and select all elements
     var arr = [];
     var elements = document.querySelectorAll('.' + str);
+
     //loop trough all elements
     elements.forEach(function(element) {
         //push them to the array
