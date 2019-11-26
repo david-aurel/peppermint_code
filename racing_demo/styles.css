@@ -7,9 +7,9 @@
 }
 
 .board {
-    background-color: #0d7377;
+    background-color: #e3feff;
     min-height: 100vh;
-    border: 10px solid #14ffec;
+    border: 10px solid #526cb4;
     position: relative;
 }
 
@@ -19,27 +19,36 @@
     top: 0;
     right: 0;
     margin: 20px;
-    background-color: #212121;
+    background-color: #526cb4;
     border-radius: 5px;
     padding: 10px;
-    color: #14ffec;
+    color: #ffffff;
     text-transform: uppercase;
 }
 
-#boost { font-size: 50px; }
+#boost {
+    font-size: 25px;
+}
 
-.sky { min-height: 15vh; }
+.sky {
+    min-height: 15vh;
+}
 
 .track {
     min-height: 20vh;
     position: relative;
-    background-color: #323232;
+    background-color: #c1e6c5;
     border-bottom: dashed white 3px;
-    border-right: dashed white 20px;
+    /* border-right: dashed rgb(248, 42, 42) 5px; */
+}
+
+.firstTrack {
+    border-top: dashed white 3px;
 }
 
 .racer {
     position: absolute;
+    left: 0;
     font-size: 100px;
     display: inline-block;
     transform: scale(-1, 1);
