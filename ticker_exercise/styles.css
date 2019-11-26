@@ -22,10 +22,15 @@ body {
     white-space: nowrap;
 }
 
-.headlines a {
+a {
     margin-right: 20px;
     color: black;
     text-decoration: none;
+}
+
+a:hover {
+    color: blue;
+    text-decoration: underline;
 }
 
 /* ticker2 */

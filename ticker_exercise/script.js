@@ -1,15 +1,17 @@
 (() => {
-    let headlines = document.querySelector('.headlines'),
+    var headlines = document.querySelector('.headlines'),
         links = headlines.getElementsByTagName('a'),
         left = headlines.offsetLeft,
-        ticker = document.querySelector('.ticker');
+        ticker = document.querySelector('.ticker'),
+        ticker2 = document.querySelector('.ticker2');
 
-    let headlines2 = document.querySelector('.headlines2'),
+    var headlines2 = document.querySelector('.headlines2'),
         links2 = headlines2.getElementsByTagName('a'),
         right = headlines2.offsetLeft + headlines2.offsetWidth;
 
-    let speed = 1,
-        myReq;
+    var speed = 2,
+        myReq,
+        myReq2;
 
     //ticker 1
     function moveHeadlines() {
@@ -43,34 +45,28 @@
         }
         //move the headlines over
         headlines2.style.right = right + 'px';
-        requestAnimationFrame(moveHeadlines2);
+        myReq2 = requestAnimationFrame(moveHeadlines2);
     }
 
     moveHeadlines2();
 
-    //start and stop the animation
+    //stop animation
     ticker.addEventListener('mouseenter', function() {
-        //stop animation
         cancelAnimationFrame(myReq);
-        // change the style of the links
-        for (var i = 0; links.length; i++) {
-            links[i].addEventListener('mouseenter', function(event) {
-                event.stopPropagation();
-                event.target.style.color = 'blue';
-                event.target.style.textDecoration = 'underline';
-            });
-        }
     });
 
+    //start animation
     ticker.addEventListener('mouseleave', function() {
-        //start animation
         myReq = requestAnimationFrame(moveHeadlines);
-        //change style of the link back to its original
-        for (var i = 0; links.length; i++) {
-            event.stopPropagation();
-            links[i].addEventListener('mouseleave', function(event) {
-                event.target.style.color = 'black';
-            });
-        }
+    });
+
+    //stop animation ticker 2
+    ticker2.addEventListener('mouseenter', function() {
+        cancelAnimationFrame(myReq2);
+    });
+
+    //start animation ticker2
+    ticker2.addEventListener('mouseleave', function() {
+        myReq2 = requestAnimationFrame(moveHeadlines2);
     });
 })();
