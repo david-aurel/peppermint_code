@@ -1,13 +1,17 @@
 (() => {
     let headlines = document.querySelector('.headlines'),
         links = headlines.getElementsByTagName('a'),
-        left = headlines.offsetLeft;
+        left = headlines.offsetLeft,
+        ticker = document.querySelector('.ticker');
+
     let headlines2 = document.querySelector('.headlines2'),
         links2 = headlines2.getElementsByTagName('a'),
         right = headlines2.offsetLeft + headlines2.offsetWidth;
 
-    let speed = 2;
+    let speed = 1,
+        myReq;
 
+    //ticker 1
     function moveHeadlines() {
         left -= speed;
         //if the first link is offscreen
@@ -19,14 +23,14 @@
         }
         //move the headlines over
         headlines.style.left = left + 'px';
-        requestAnimationFrame(moveHeadlines);
+        myReq = requestAnimationFrame(moveHeadlines);
     }
 
     moveHeadlines();
 
+    //ticker2
     function moveHeadlines2() {
         right -= speed;
-        console.log(right);
         // if last link is offscreen
         if (right <= -links2[links.length - 1].offsetWidth - 20) {
             //add to left the width of the currently first link
@@ -43,8 +47,30 @@
     }
 
     moveHeadlines2();
+
+    //start and stop the animation
+    ticker.addEventListener('mouseenter', function() {
+        //stop animation
+        cancelAnimationFrame(myReq);
+        // change the style of the links
+        for (var i = 0; links.length; i++) {
+            links[i].addEventListener('mouseenter', function(event) {
+                event.stopPropagation();
+                event.target.style.color = 'blue';
+                event.target.style.textDecoration = 'underline';
+            });
+        }
+    });
+
+    ticker.addEventListener('mouseleave', function() {
+        //start animation
+        myReq = requestAnimationFrame(moveHeadlines);
+        //change style of the link back to its original
+        for (var i = 0; links.length; i++) {
+            event.stopPropagation();
+            links[i].addEventListener('mouseleave', function(event) {
+                event.target.style.color = 'black';
+            });
+        }
+    });
 })();
-
-// right = -2700;
-
-// right = -2200;
