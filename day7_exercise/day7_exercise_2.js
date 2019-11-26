@@ -17,4 +17,9 @@ textArea.addEventListener('input', function() {
 
     //replace
     textArea.value = textArea.value.slice(0, -1) + gettysburg[charAt];
+
+    //prevent the user from deleting too many characters and causing gettysburg[charAt] to go undefined
+    if (charAt < 0) {
+        textArea.value = '';
+    }
 });
