@@ -8,7 +8,8 @@ body {
 
 #sheep {
     position: relative;
-    height: 600px;
+    height: 100vh;
+    width: 100%;
     overflow: hidden;
 }
 
@@ -22,18 +23,36 @@ body {
     transform: translateX(100%);
 }
 
-#sheep img:nth-of-type(3n) {
-    object-position: top;
-}
-
 #sheep img.onscreen {
     transform: translateX(0%);
     transition-property: transform;
-    transition-duration: 3s;
+    transition-duration: 2s;
 }
 
 #sheep img.offscreen-left {
     transform: translateX(-100%);
     transition-property: transform;
-    transition-duration: 3s;
+    transition-duration: 2s;
+}
+
+#circles {
+    text-align: center;
+    margin-top: 10px;
+}
+#circles div {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border: 2px solid black;
+}
+
+#circles div.filled {
+    background: black;
+}
+
+@media (min-width: 786px) {
+    #sheep {
+        height: 600px;
+        width: 100%;
+    }
 }
