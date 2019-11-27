@@ -26,28 +26,34 @@ body {
 #sheep img.onscreen {
     transform: translateX(0%);
     transition-property: transform;
-    transition-duration: 2s;
+    transition-duration: 1.5s;
 }
 
 #sheep img.offscreen-left {
     transform: translateX(-100%);
     transition-property: transform;
-    transition-duration: 2s;
+    transition-duration: 1.5s;
 }
 
 #circles {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
     text-align: center;
-    margin-top: 10px;
 }
-#circles div {
+.dot {
     display: inline-block;
     width: 15px;
     height: 15px;
-    border: 2px solid black;
+    margin: 0 10px;
+    border: 2px solid white;
+    border-radius: 50%;
+    transition: background 0.5s;
 }
 
-#circles div.filled {
-    background: black;
+.dot.highlighted {
+    background: white;
+    transition: background 0.5s;
 }
 
 @media (min-width: 786px) {
