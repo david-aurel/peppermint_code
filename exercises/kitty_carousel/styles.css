@@ -35,7 +35,7 @@ body {
     transition-duration: 1.5s;
 }
 
-#circles {
+#dots {
     position: absolute;
     bottom: 20px;
     width: 100%;
@@ -54,6 +54,23 @@ body {
 .dot.highlighted {
     background: white;
     transition: background 0.5s;
+}
+
+#arrows {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 20px;
+    width: 100%;
+}
+
+.arrow {
+    display: inline-block;
+    color: white;
+    font-size: 2.5em;
 }
 
 @media (min-width: 786px) {
