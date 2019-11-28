@@ -82,3 +82,14 @@ ctx.beginPath();
 ctx.moveTo(462, 290);
 ctx.bezierCurveTo(442, 310, 410, 400, 410, 430);
 ctx.stroke();
+
+//heart
+ctx.strokeStyle = 'red';
+ctx.beginPath();
+ctx.moveTo(300, 100);
+ctx.bezierCurveTo(250, 50, 250, 130, 300, 160);
+ctx.bezierCurveTo(350, 130, 350, 50, 300, 100);
+ctx.closePath();
+ctx.fillStyle = 'red';
+ctx.fill();
+ctx.stroke();
