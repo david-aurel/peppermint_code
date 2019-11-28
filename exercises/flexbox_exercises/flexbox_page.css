@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background: #fab696;
+    height: 70px;
+}
+
+main {
+    background: #fbe3b9;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    background: #2d334a;
+    height: 30px;
+}
