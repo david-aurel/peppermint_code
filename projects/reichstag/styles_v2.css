@@ -123,6 +123,62 @@ footer span {
     padding-top: 5px;
 }
 
+/* sidenav */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    visibility: hidden;
+}
+
+.sidenav {
+    position: absolute;
+    right: -50%;
+    height: 100%;
+    width: 200px;
+    background: white;
+    transition: 1s;
+}
+
+.sidenav-content {
+    font-size: 1.7em;
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+    line-height: 2em;
+}
+.sidenav-content,
+.sidenav-content a {
+    font-size: 1.3em;
+    text-decoration: none;
+    color: blue;
+}
+
+.sidenav-content div:last-of-type a {
+    line-height: 100px;
+    font-size: 1em;
+}
+
+.sidenav .back {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-self: flex-end;
+}
+
+.on {
+    visibility: visible;
+    transition: 1s;
+}
+
+.on .sidenav {
+    transition-property: right;
+    transition-duration: 1s;
+    right: 0;
+}
+
 /* media queries */
 @media (min-width: 768px) {
     .dataWrapper {
@@ -143,5 +199,9 @@ footer span {
 
     .button {
         font-size: 2vw;
+    }
+
+    .sidenav {
+        width: 250px;
     }
 }
