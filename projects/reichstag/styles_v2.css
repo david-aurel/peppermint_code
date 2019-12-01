@@ -33,6 +33,16 @@ header {
     background-size: 45%;
 }
 
+/* cursor  */
+#logo,
+#menu,
+.sidenav .back,
+.h1wrapper button,
+.data,
+footer span {
+    cursor: pointer;
+}
+
 /* jumbo */
 .jumbo {
     position: relative;
@@ -132,6 +142,8 @@ footer span {
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
     visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 1s;
 }
 
 .sidenav {
@@ -140,7 +152,7 @@ footer span {
     height: 100%;
     width: 200px;
     background: white;
-    transition: 1s;
+    transition-duration: 1s;
 }
 
 .sidenav-content {
@@ -170,12 +182,13 @@ footer span {
 
 .on {
     visibility: visible;
-    transition: 1s;
+    opacity: 1;
+    transition: 0.5s;
 }
 
 .on .sidenav {
     transition-property: right;
-    transition-duration: 1s;
+    transition-duration: 0.5s;
     right: 0;
 }
 
