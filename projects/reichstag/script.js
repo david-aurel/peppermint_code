@@ -18,3 +18,20 @@ back.addEventListener('click', function() {
 sideNav.addEventListener('click', function(e) {
     e.stopPropagation();
 });
+
+//jQuery Dialog Box
+var dialog = $('.dialog-wrapper'),
+    dialogExit = $('.dialog span');
+
+setTimeout(function() {
+    dialog.css({
+        visibility: 'visible',
+        opacity: 1
+    });
+    dialogExit.on('click', function() {
+        dialog.css({
+            visibility: 'hidden',
+            opacity: 0
+        });
+    });
+}, 1000);

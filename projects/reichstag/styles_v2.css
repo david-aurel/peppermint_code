@@ -39,7 +39,8 @@ header {
 .sidenav .back,
 .h1wrapper button,
 .data,
-footer span {
+footer span,
+.dialog span {
     cursor: pointer;
 }
 
@@ -190,6 +191,39 @@ footer span {
     transition-property: right;
     transition-duration: 0.5s;
     right: 0;
+}
+
+/* dialog */
+.dialog-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background: rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 1s, opacity 1s;
+}
+.dialog {
+    background: white;
+    position: fixed;
+    width: 80%;
+    max-width: 400px;
+    padding: 25px 15px;
+    border-radius: 10px;
+}
+
+.dialog h3,
+.dialog p {
+    margin-bottom: 15px;
+}
+
+.dialog span {
+    text-align: right;
+    margin-right: 10px;
 }
 
 /* media queries */
