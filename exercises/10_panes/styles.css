@@ -1,0 +1,30 @@
+img {
+    height: 600px;
+    width: 400px;
+    object-fit: cover;
+}
+
+#container {
+    height: 600px;
+    width: 400px;
+    border: 10px solid rgb(240, 143, 143);
+    position: relative;
+}
+
+#bottom-image {
+    position: absolute;
+}
+
+#top-image {
+    position: absolute;
+    overflow: hidden;
+    width: 200px;
+}
+
+#slider {
+    position: absolute;
+    height: 100%;
+    width: 10px;
+    background: rgb(90, 166, 228);
+    left: 200px;
+}
