@@ -10,3 +10,17 @@ h1 {
 /* .results p:hover {
     font-weight: bold;
 } */
+
+input {
+    font-size: 1em;
+}
+
+.results {
+    cursor: pointer;
+    font-family: sans-serif;
+}
+
+.no-country {
+    opacity: 0.5;
+    cursor: default;
+}

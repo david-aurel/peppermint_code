@@ -10,10 +10,10 @@
         let userInput = searchField.val().toLowerCase(),
             results = [],
             htmlForCountries = '',
-            noResult = false;
+            noResult;
+
         for (let i = 0; i < countries.length; i++) {
             noResult = false;
-            // here we need to compare the users input, with the countries[i]
             if (userInput === '') {
                 break;
             }
@@ -28,7 +28,6 @@
             }
         }
         for (let j = 0; j < results.length; j++) {
-            // here we want to build up our html
             htmlForCountries += '<p class="country">' + results[j] + '</p>';
         }
         resultsDiv.html(htmlForCountries);
@@ -56,6 +55,14 @@
     // 3. mousedown event
     // take the country the user is clicking on and put it in the input field
     // list of countries should go away
+    resultsDiv.on('click', 'p', function() {
+        let element = $(this);
+        if (element.hasClass('country')) {
+            // searchField.val(element.val());
+            searchField.val(element.text());
+            resultsDiv.html('');
+        }
+    });
 
     // 4. key event
     // allow user to scroll through the list using the up and down arrows
