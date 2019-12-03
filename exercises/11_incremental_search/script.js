@@ -54,7 +54,7 @@
     // 3. mousedown event
     // take the country the user is clicking on and put it in the input field
     // list of countries should go away
-    resultsDiv.on('click', 'p', function() {
+    resultsDiv.on('mousedown', 'p', function() {
         let element = $(this);
         if (element.hasClass('country')) {
             searchField.val(element.text());
@@ -119,9 +119,7 @@
     // focus event listener, jQuery method hide and show
 
     searchField.on('blur', function() {
-        setTimeout(function() {
-            resultsDiv.hide();
-        }, 1000);
+        resultsDiv.hide();
     });
 
     // 6. focus event
