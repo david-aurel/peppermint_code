@@ -32,7 +32,7 @@
         resultsDiv.html(htmlForCountries);
 
         if (noResult) {
-            htmlForCountries += '<p class="no-country">no result</p>';
+            htmlForCountries += '<p class="no-country">no results</p>';
             resultsDiv.html(htmlForCountries);
         }
     });
@@ -119,7 +119,9 @@
     // focus event listener, jQuery method hide and show
 
     searchField.on('blur', function() {
-        resultsDiv.hide();
+        setTimeout(function() {
+            resultsDiv.hide();
+        }, 1000);
     });
 
     // 6. focus event
