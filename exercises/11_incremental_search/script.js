@@ -69,46 +69,48 @@
     // enter key - we want to put whichever country has the class highlighted on put into the input field
     searchField.on('keydown', function(e) {
         //arrow down
-        if (e.which === 40) {
-            if (!resultsDiv.find('p').hasClass('highlighted')) {
-                $('.results p')
-                    .eq(0)
-                    .addClass('highlighted');
-            } else if (
-                !$('.results p')
-                    .last()
-                    .hasClass('highlighted')
-            ) {
-                resultsDiv
-                    .find('p.highlighted')
-                    .removeClass('highlighted')
-                    .next()
-                    .addClass('highlighted');
+        if (resultsDiv.find('p.country').hasClass('country')) {
+            if (e.which === 40) {
+                if (!resultsDiv.find('p').hasClass('highlighted')) {
+                    $('.results p')
+                        .eq(0)
+                        .addClass('highlighted');
+                } else if (
+                    !$('.results p')
+                        .last()
+                        .hasClass('highlighted')
+                ) {
+                    resultsDiv
+                        .find('p.highlighted')
+                        .removeClass('highlighted')
+                        .next()
+                        .addClass('highlighted');
+                }
             }
-        }
-        // arrow up
-        if (e.which === 38) {
-            if (!resultsDiv.find('p').hasClass('highlighted')) {
-                $('.results p')
-                    .last()
-                    .addClass('highlighted');
-            } else if (
-                !$('.results p')
-                    .eq(0)
-                    .hasClass('highlighted')
-            ) {
-                resultsDiv
-                    .find('p.highlighted')
-                    .removeClass('highlighted')
-                    .prev()
-                    .addClass('highlighted');
+            // arrow up
+            if (e.which === 38) {
+                if (!resultsDiv.find('p').hasClass('highlighted')) {
+                    $('.results p')
+                        .last()
+                        .addClass('highlighted');
+                } else if (
+                    !$('.results p')
+                        .eq(0)
+                        .hasClass('highlighted')
+                ) {
+                    resultsDiv
+                        .find('p.highlighted')
+                        .removeClass('highlighted')
+                        .prev()
+                        .addClass('highlighted');
+                }
             }
-        }
-        // enter
-        if (e.which === 13) {
-            let highlightedVal = resultsDiv.find('p.highlighted').text();
-            searchField.val(highlightedVal);
-            resultsDiv.html('');
+            // enter
+            if (e.which === 13) {
+                let highlightedVal = resultsDiv.find('p.highlighted').text();
+                searchField.val(highlightedVal);
+                resultsDiv.html('');
+            }
         }
     });
 
@@ -116,8 +118,15 @@
     // we want to hide the results
     // focus event listener, jQuery method hide and show
 
+    searchField.on('blur', function() {
+        resultsDiv.hide();
+    });
+
     // 6. focus event
     // we want to show the results
+    searchField.on('focus', function() {
+        resultsDiv.show();
+    });
 })([
     'Afghanistan',
     'Albania',
