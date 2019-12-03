@@ -1,23 +1,63 @@
 (countries => {
-    let searchField = $('input');
+    let searchField = $('input'),
+        resultsDiv = $('.results');
 
     // 1. input event
     // get a list of countries that match the input we get from the user
     // if the user types gibberish, show a message that says 'no results'
+    // if the input field is empty, don't show any results
     searchField.on('input', function() {
-        console.log('input');
+        let userInput = searchField.val().toLowerCase(),
+            results = [],
+            htmlForCountries = '',
+            noResult = false;
+        for (let i = 0; i < countries.length; i++) {
+            noResult = false;
+            // here we need to compare the users input, with the countries[i]
+            if (userInput === '') {
+                break;
+            }
+            if (countries[i].toLowerCase().indexOf(userInput) === 0) {
+                results.push(countries[i]);
+            }
+            if (results.length === 4) {
+                break;
+            }
+            if (results.length === 0) {
+                noResult = true;
+            }
+        }
+        for (let j = 0; j < results.length; j++) {
+            // here we want to build up our html
+            htmlForCountries += '<p class="country">' + results[j] + '</p>';
+        }
+        resultsDiv.html(htmlForCountries);
+
+        if (noResult) {
+            htmlForCountries += '<p class="no-country">no result</p>';
+            resultsDiv.html(htmlForCountries);
+        }
     });
 
     // 2. mouseover event
     // i.e. hover - add a highlight class to the country we are currently hovering over
     // remove highlight class from country we are not hovering over
+    // look up event delegation!
+
     // 3. mousedown event
     // take the country the user is clicking on and put it in the input field
+    // list of countries should go away
+
     // 4. key event
     // allow user to scroll through the list using the up and down arrows
-    // when I press enter, that country should appear on the input field
+    // down arrow key - if nothing has the class highlighted alrady, add it to the first. If the last one has it, do nothing (dont increment further). If a country other than the last one has highlighted, remove the class from element that has it and add class to the next element. next and prev jQuery methods could be useful
+    // up arrow key -
+    // enter key - we want to put whichever country has the class highlighted on put into the input field
+
     // 5. blur event
     // we want to hide th results
+    // focus event listener, jQuery method hide and show
+
     // 6. focus event
     // we want to show the results
 })([
