@@ -43,6 +43,15 @@
     // i.e. hover - add a highlight class to the country we are currently hovering over
     // remove highlight class from country we are not hovering over
     // look up event delegation!
+    resultsDiv.on('mouseover', 'p', function() {
+        let element = $(this);
+        if (element.hasClass('country')) {
+            element.addClass('highlighted');
+            $('.results p')
+                .not(element)
+                .removeClass('highlighted');
+        }
+    });
 
     // 3. mousedown event
     // take the country the user is clicking on and put it in the input field
