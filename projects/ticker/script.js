@@ -1,4 +1,19 @@
 (() => {
+    // ajax
+    $.ajax({
+        url: 'links.json',
+        success: function(data) {
+            console.log(data);
+            let linkHtml = '';
+            for (let i = 0; i < data.length; i++) {
+                linkHtml +=
+                    '<a href="' + data[i].href + '">' + data[i].text + '</a>';
+            }
+            headlines.html(linkHtml);
+            headlines2.html(linkHtml);
+        }
+    });
+
     var headlines = $('.headlines'),
         headlines2 = $('.headlines2'),
         left = headlines.offset().left,
@@ -15,7 +30,7 @@
         //if the first link is offscreen
         if (left < -links.eq(0).width()) {
             //add to left the width of the currently first link
-            left += links.eq(0).width() + 25;
+            left += links.eq(0).width() + 20;
             //make the first link the last link
             headlines.append(links.eq(0));
         }
@@ -35,7 +50,7 @@
         // if last link is offscreen
         if (right < -links2.eq([links2.length - 1]).outerWidth() - 20) {
             //add to left the width of the currently first link
-            right += links2.eq([links2.length - 1]).outerWidth() + 35;
+            right += links2.eq([links2.length - 1]).outerWidth() + 30;
             // //make the last link the first link
             headlines2.prepend(links2.eq([links2.length - 1]));
         }
