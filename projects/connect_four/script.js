@@ -3,8 +3,22 @@
         resetButton = $('.reset');
     var currentPlayer = 'player1';
 
-    //column selection
+    //column selection for mouse
     $('.column').on('click', function(e) {
+        gameMove(e);
+    });
+
+    //column selection for keyboard
+    $(document).on('keydown', function(e) {
+        var holes = $('.board').find('.hole');
+        // if no hole has it, add selected class to first hole, no matter which arrow key
+        if (e.which === 37) {
+            holes.eq(0).addClass('select');
+        }
+    });
+
+    // main game function
+    function gameMove(e) {
         var col = $(e.currentTarget),
             slotsInCol = col.children(),
             holesInCol = slotsInCol.children();
@@ -33,7 +47,7 @@
         }
 
         switchPlayers();
-    });
+    }
 
     // check for Victory function
     function checkForVictory(slots) {
@@ -70,7 +84,6 @@
 
     // reset function
     function reset() {
-        var holes = $('.board').find('.hole');
         for (var i = 0; i < holes.length; i++) {
             holes.eq(i).removeClass('player1 player2');
             holes.eq(i).css({ border: 'none' });
