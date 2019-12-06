@@ -1,4 +1,5 @@
 (() => {
+    var victory = $('.victory h1');
     var currentPlayer = 'player1';
 
     //column selection
@@ -24,10 +25,12 @@
 
         if (checkForVictory(holesInCol)) {
             //do the victory dance
-            console.log(currentPlayer + ' won: four in a column');
+            victory.html(currentPlayer + ' won (four in a column)');
+            $('.column').unbind();
         } else if (checkForVictory(holesInRow)) {
             //do the victory dance
-            console.log(currentPlayer + ' won: four in a row');
+            victory.html(currentPlayer + ' won (four in a row)');
+            $('.column').unbind();
         }
 
         switchPlayers();

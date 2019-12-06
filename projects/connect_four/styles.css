@@ -30,3 +30,7 @@
 .player2 {
     background: green;
 }
+
+.victory h1 {
+    /* visibility: hidden; */
+}
