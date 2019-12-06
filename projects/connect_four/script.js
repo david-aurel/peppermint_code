@@ -2,7 +2,7 @@
     var victory = $('.victory h1'),
         resetButton = $('.reset');
     var currentPlayer = 'player1';
-    var holes = $('.board').find('.hole');
+    var holes = $('.hole');
 
     //column selection for mouse
     $('.column').on('click', function(e) {
@@ -12,8 +12,11 @@
     //column selection for keyboard
     $(document).on('keydown', function(e) {
         // if no hole has it, add selected class to first hole, no matter which arrow key
+        if (e.which === 39) {
+            console.log('right arrow key pressed');
+        }
         if (e.which === 37) {
-            holes.eq(0).addClass('select');
+            console.log('left arrow key pressed');
         }
     });
 
@@ -38,6 +41,13 @@
         var slotsInRow = $('.row' + i),
             holesInRow = slotsInRow.children();
 
+        // get winning array
+        var currentItemCoord = $(e.currentTarget).index() - i;
+        var currentItemCoord2 = $(e.currentTarget).index() + i;
+        var winArr1 = getWinningArray(currentItemCoord, currentItemCoord2)[0];
+        var winArr2 = getWinningArray(currentItemCoord, currentItemCoord2)[1];
+        for (let k = 0; k < )
+
         if (checkForVictory(holesInCol)) {
             //do the victory dance
             victory.html(currentPlayer + ' won (four in a column)');
@@ -45,6 +55,16 @@
             //do the victory dance
             victory.html(currentPlayer + ' won (four in a row)');
         }
+        // else if (
+        //     checkForVictory(
+        //         getWinningArray(currentItemCoord, currentItemCoord2)[0]
+        //     ) ||
+        //     checkForVictory(
+        //         getWinningArray(currentItemCoord, currentItemCoord2)[1]
+        //     )
+        // ) {
+        //     console.log(currentPlayer + 'won diagonal');
+        // }
 
         switchPlayers();
     }
@@ -98,4 +118,33 @@
     resetButton.on('click', function() {
         reset();
     });
+
+    //calculate diagonal winning array
+    function getWinningArray(currentItemCoord, currentItemCoord2) {
+        //check each item for its coordinates
+        var winArr1 = [],
+            winArr2 = [];
+        for (let i = 0; i < holes.length; i++) {
+            let row = holes
+                .eq(i)
+                .parent()
+                .index();
+            let col = holes
+                .eq(i)
+                .parent()
+                .parent()
+                .index();
+
+            //put all the item with the corresponding coordinates in an array and return it
+            if (col - row == currentItemCoord) {
+                winArr1.push(holes.eq(i));
+            }
+            if (col + row == currentItemCoord2) {
+                winArr2.push(holes.eq(i));
+            }
+        }
+        // console.log('arr1: ', winArr1);
+        // console.log('arr2: ', winArr2);
+        return [winArr1, winArr2];
+    }
 })();
