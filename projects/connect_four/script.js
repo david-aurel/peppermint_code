@@ -1,5 +1,6 @@
 (() => {
-    var victory = $('.victory h1');
+    var victory = $('.victory h1'),
+        resetButton = $('.reset');
     var currentPlayer = 'player1';
 
     //column selection
@@ -26,16 +27,15 @@
         if (checkForVictory(holesInCol)) {
             //do the victory dance
             victory.html(currentPlayer + ' won (four in a column)');
-            $('.column').unbind();
         } else if (checkForVictory(holesInRow)) {
             //do the victory dance
             victory.html(currentPlayer + ' won (four in a row)');
-            $('.column').unbind();
         }
 
         switchPlayers();
     });
 
+    // check for Victory function
     function checkForVictory(slots) {
         var count = 0;
         //loop through the slots and check how many have the class
@@ -44,6 +44,8 @@
                 count++;
 
                 if (count == 4) {
+                    $('.column').unbind();
+                    resetButton.css({ visibility: 'visible' });
                     return true;
                 }
             } else {
@@ -52,6 +54,7 @@
         }
     }
 
+    // switch players function
     function switchPlayers() {
         if (currentPlayer == 'player1') {
             currentPlayer = 'player2';
@@ -59,4 +62,18 @@
             currentPlayer = 'player1';
         }
     }
+
+    // reset function
+    function reset() {
+        var holes = $('.board').find('.hole');
+        for (var i = 0; i < holes.length; i++) {
+            holes.eq(i).removeClass('player1 player2');
+        }
+        victory.html('');
+        resetButton.css({ visibility: 'hidden' });
+    }
+    // reset button listener
+    resetButton.on('click', function() {
+        reset();
+    });
 })();

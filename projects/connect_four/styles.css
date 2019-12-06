@@ -31,6 +31,6 @@
     background: green;
 }
 
-.victory h1 {
-    /* visibility: hidden; */
+.reset {
+    visibility: hidden;
 }
