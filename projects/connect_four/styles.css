@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+.board {
+    display: flex;
+}
+
+.slot {
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    /* overflow: hidden; */
+}
+
+.hole {
+    transform: translate(5px, 5px);
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    /* transparent with overflow border (potentially useful for animations) */
+    /* transform: translate(-15px, -15px); */
+    /* border: 20px solid red; */
+}
+
+.player1 {
+    background: tomato;
+}
+
+.player2 {
+    background: green;
+}
