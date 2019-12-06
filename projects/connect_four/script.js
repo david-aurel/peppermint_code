@@ -2,6 +2,7 @@
     var victory = $('.victory h1'),
         resetButton = $('.reset');
     var currentPlayer = 'player1';
+    var holes = $('.board').find('.hole');
 
     //column selection for mouse
     $('.column').on('click', function(e) {
@@ -10,7 +11,6 @@
 
     //column selection for keyboard
     $(document).on('keydown', function(e) {
-        var holes = $('.board').find('.hole');
         // if no hole has it, add selected class to first hole, no matter which arrow key
         if (e.which === 37) {
             holes.eq(0).addClass('select');
@@ -62,7 +62,7 @@
                     winningPieces.forEach(function(item) {
                         item.css({ border: '3px solid goldenrod' });
                     });
-                    $('.column').unbind();
+                    $('.column').off();
                     resetButton.css({ visibility: 'visible' });
                     return true;
                 }
@@ -90,6 +90,9 @@
         }
         victory.html('');
         resetButton.css({ visibility: 'hidden' });
+        $('.column').on('click', function(e) {
+            gameMove(e);
+        });
     }
     // reset button listener
     resetButton.on('click', function() {
