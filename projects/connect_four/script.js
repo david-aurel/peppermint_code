@@ -54,6 +54,7 @@
                 }
             } else {
                 count = 0;
+                winningPieces = [];
             }
         }
     }
@@ -72,6 +73,7 @@
         var holes = $('.board').find('.hole');
         for (var i = 0; i < holes.length; i++) {
             holes.eq(i).removeClass('player1 player2');
+            holes.eq(i).css({ border: 'none' });
         }
         victory.html('');
         resetButton.css({ visibility: 'hidden' });
