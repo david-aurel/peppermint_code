@@ -37,13 +37,17 @@
 
     // check for Victory function
     function checkForVictory(slots) {
-        var count = 0;
+        var count = 0,
+            winningPieces = [];
         //loop through the slots and check how many have the class
         for (var i = 0; i < slots.length; i++) {
             if (slots.eq(i).hasClass(currentPlayer)) {
                 count++;
-
+                winningPieces.push(slots.eq(i));
                 if (count == 4) {
+                    winningPieces.forEach(function(item) {
+                        item.css({ border: '3px solid goldenrod' });
+                    });
                     $('.column').unbind();
                     resetButton.css({ visibility: 'visible' });
                     return true;
