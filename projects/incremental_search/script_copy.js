@@ -4,31 +4,61 @@ let searchField = $('input'),
 // ajax
 
 searchField.on('input', function() {
-    $.ajax({
-        url: 'https://flame-egg.glitch.me/',
-        data: {
-            q: searchField.val()
-        },
-        success: function(data) {
-            let resultsHtml = '',
-                htmlForCountries = '',
-                noResult;
+    function getCountries() {
+        // make ajax request to get countries array
+        $.ajax({
+            url: 'https://flame-egg.glitch.me/',
+            data: {
+                q: searchField.val()
+            },
+            success: function(data) {
+                let resultsHtml = '',
+                    htmlForCountries = '',
+                    noResult;
 
-            for (let i = 0; i < data.length; i++) {
-                noResult = false;
-                resultsHtml += '<p class="country">' + data[i] + '</p>';
-            }
-            resultsDiv.html(resultsHtml);
+                if (searchField.val() === '') {
+                    resultsDiv.html('');
+                    return;
+                }
 
-            if (data.length === 0 && searchField.val() != '') {
-                noResult = true;
+                // here we loop trough the countries array and inject it into our html
+                for (let i = 0; i < data.length; i++) {
+                    noResult = false;
+                    resultsHtml += '<p class="country">' + data[i] + '</p>';
+                }
+                resultsDiv.html(resultsHtml);
+
+                //handling conditions for when to display 'no results'
+                if (data.length === 0 && searchField.val() != '') {
+                    noResult = true;
+                }
+                if (noResult) {
+                    htmlForCountries += '<p class="no-country">no results</p>';
+                    resultsDiv.html(htmlForCountries);
+                }
+
+                // if the input didnt match the countries, rerun the ajax request. errors will come up when the user types gibberish, because the countries string can't be sliced, but we ignore them.
+                try {
+                    let input = searchField.val().toLowerCase(),
+                        beginningOfCountry = data[0]
+                            .slice(0, input.length)
+                            .toLowerCase();
+                    if (beginningOfCountry != input) {
+                        console.log(
+                            'input did not match countries! (already rerun ajax request)'
+                        );
+                        console.log(beginningOfCountry);
+                        console.log(input);
+
+                        getCountries();
+                    }
+                } catch (err) {
+                    return;
+                }
             }
-            if (noResult) {
-                htmlForCountries += '<p class="no-country">no results</p>';
-                resultsDiv.html(htmlForCountries);
-            }
-        }
-    });
+        });
+    }
+    getCountries();
 });
 
 // 2. mouseover event
