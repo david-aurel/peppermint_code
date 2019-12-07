@@ -40,45 +40,28 @@
             gameMove(e, 'enter');
         }
     });
+    function select() {
+        col.on('mouseenter click', function() {
+            var element = $(this),
+                currentHolesArr = element
+                    .children()
+                    .children()
+                    .not('.player1')
+                    .not('.player2')
+                    .last();
 
-    //select for mouse
-    // $('.board').on('mouseover', '.column', function() {
-    //     var element = $(this);
-    //     element.addClass('select');
-    //     col.not(element).removeClass('select');
-    //     element
-    //         .children()
-    //         .children()
-    //         .not('.player1, .player2')
-    //         .last()
-    //         .addClass('select');
-    //     // $('.select').hover(function() {
-    //     //     console.log('fire');
-    //     //     $('.select .hole')
-    //     //         .not('.player1, .player2')
-    //     //         .last()
-    //     //         .toggleClass('selectHole');
-    //     // });
-    // });
-    col.on('mouseenter click', function() {
-        var element = $(this),
-            currentHolesArr = element
-                .children()
-                .children()
-                .not('.player1')
-                .not('.player2')
-                .last();
+            setTimeout(function() {
+                currentHolesArr.addClass('select');
+            }, 1);
+        });
+        col.on('mouseleave click', function() {
+            var element = $(this),
+                currentHolesArr = element.children().children();
 
-        setTimeout(function() {
-            currentHolesArr.addClass('select');
-        }, 1);
-    });
-    col.on('mouseleave click', function() {
-        var element = $(this),
-            currentHolesArr = element.children().children();
-
-        currentHolesArr.removeClass('select');
-    });
+            currentHolesArr.removeClass('select');
+        });
+    }
+    select();
 
     // main game function
     function gameMove(e, enter) {
@@ -225,6 +208,7 @@
         $('.column').on('click', function(e) {
             gameMove(e);
         });
+        select();
     }
     // reset button listener
     resetButton.on('click', function() {
