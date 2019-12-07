@@ -46,7 +46,10 @@
         var currentItemCoord2 = $(e.currentTarget).index() + i;
         var winArr1 = getWinningArray(currentItemCoord, currentItemCoord2)[0];
         var winArr2 = getWinningArray(currentItemCoord, currentItemCoord2)[1];
-        for (let k = 0; k < )
+        console.log(winArr1);
+        console.log(winArr2);
+        console.log(holesInRow);
+        console.log(holesInCol);
 
         if (checkForVictory(holesInCol)) {
             //do the victory dance
@@ -54,17 +57,9 @@
         } else if (checkForVictory(holesInRow)) {
             //do the victory dance
             victory.html(currentPlayer + ' won (four in a row)');
+        } else if (checkForVictory(winArr1)) {
+            console.log(currentPlayer + 'won diagonal');
         }
-        // else if (
-        //     checkForVictory(
-        //         getWinningArray(currentItemCoord, currentItemCoord2)[0]
-        //     ) ||
-        //     checkForVictory(
-        //         getWinningArray(currentItemCoord, currentItemCoord2)[1]
-        //     )
-        // ) {
-        //     console.log(currentPlayer + 'won diagonal');
-        // }
 
         switchPlayers();
     }
