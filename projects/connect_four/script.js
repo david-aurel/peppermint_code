@@ -13,31 +13,83 @@
     //column selection for keyboard
     $(document).on('keydown', function(e) {
         // if no hole has it, add selected class to first hole
-        if (!col.find('div.select').hasClass('select')) {
+        if (!col.hasClass('select')) {
             if (e.which === 39) {
-                col.eq(0)
-                    .children()
-                    .addClass('select');
+                col.eq(0).addClass('select');
             }
             if (e.which === 37) {
-                col.last()
-                    .children()
-                    .addClass('select');
+                col.last().addClass('select');
             }
         } else {
-            if (e.which === 39) {
-                col.find('div.select')
-                    .hasClass('.select')
-                    .next()
-                    .addClass('select');
-            }
+            if (!col.last().hasClass('select'))
+                if (e.which === 39) {
+                    $('.select')
+                        .removeClass('select')
+                        .next()
+                        .addClass('select');
+                }
+            if (!col.eq(0).hasClass('select'))
+                if (e.which === 37) {
+                    $('.select')
+                        .removeClass('select')
+                        .prev()
+                        .addClass('select');
+                }
+        }
+        if (e.which === 13) {
+            gameMove(e, 'enter');
         }
     });
 
+    //select for mouse
+    // $('.board').on('mouseover', '.column', function() {
+    //     var element = $(this);
+    //     element.addClass('select');
+    //     col.not(element).removeClass('select');
+    //     element
+    //         .children()
+    //         .children()
+    //         .not('.player1, .player2')
+    //         .last()
+    //         .addClass('select');
+    //     // $('.select').hover(function() {
+    //     //     console.log('fire');
+    //     //     $('.select .hole')
+    //     //         .not('.player1, .player2')
+    //     //         .last()
+    //     //         .toggleClass('selectHole');
+    //     // });
+    // });
+    col.on('mouseenter click', function() {
+        var element = $(this),
+            currentHolesArr = element
+                .children()
+                .children()
+                .not('.player1')
+                .not('.player2')
+                .last();
+
+        setTimeout(function() {
+            currentHolesArr.addClass('select');
+        }, 1);
+    });
+    col.on('mouseleave click', function() {
+        var element = $(this),
+            currentHolesArr = element.children().children();
+
+        currentHolesArr.removeClass('select');
+    });
+
     // main game function
-    function gameMove(e) {
-        var col = $(e.currentTarget),
-            slotsInCol = col.children(),
+    function gameMove(e, enter) {
+        var col;
+        if (!enter) {
+            col = $(e.currentTarget);
+        } else {
+            col = $('.select');
+        }
+
+        var slotsInCol = col.children(),
             holesInCol = slotsInCol.children();
 
         for (var i = holesInCol.length - 1; i >= 0; i--) {
@@ -52,6 +104,7 @@
         if (i == -1) {
             return;
         }
+
         var slotsInRow = $('.row' + i),
             holesInRow = slotsInRow.children();
 
@@ -167,6 +220,7 @@
             holes.eq(i).css({ border: 'none' });
         }
         victory.html('');
+        holes.removeClass('select');
         resetButton.css({ visibility: 'hidden' });
         $('.column').on('click', function(e) {
             gameMove(e);
