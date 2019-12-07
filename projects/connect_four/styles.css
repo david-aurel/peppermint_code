@@ -24,7 +24,7 @@
     /* border: 20px solid red; */
 }
 
-.slot:hover .hole {
+/* .slot:hover .hole {
     height: 40px;
     width: 40px;
 }
@@ -32,7 +32,7 @@
 .slot:hover .hole.player2 {
     height: 40px;
     width: 40px;
-}
+} */
 
 .player1,
 .player2 {
