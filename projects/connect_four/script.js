@@ -108,8 +108,10 @@
             checkForDiagonalVictory(winArr2)
         ) {
             victory.html(currentPlayer + ' won (diagonal)');
+        } else if (holes.not('.player1').not('.player2').length === 0) {
+            victory.html('tie!');
+            resetButton.css({ visibility: 'visible' });
         }
-
         switchPlayers();
     }
 
