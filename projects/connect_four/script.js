@@ -11,59 +11,62 @@
     });
 
     //column selection for keyboard
-    $(document).on('keydown', function(e) {
-        // if no hole has it, add selected class to first hole
-        if (!holes.is('.select')) {
-            if (e.which === 39) {
-                col.eq(0)
-                    .children()
-                    .children()
-                    .not('.player1')
-                    .not('.player2')
-                    .last()
-                    .addClass('select');
+    function keydownEvents() {
+        $(document).on('keydown', function(e) {
+            // if no hole has it, add selected class to first hole
+            if (!holes.is('.select')) {
+                if (e.which === 39) {
+                    col.eq(0)
+                        .children()
+                        .children()
+                        .not('.player1')
+                        .not('.player2')
+                        .last()
+                        .addClass('select');
+                }
+                if (e.which === 37) {
+                    col.last()
+                        .children()
+                        .children()
+                        .not('.player1')
+                        .not('.player2')
+                        .last()
+                        .addClass('select');
+                }
+            } else {
+                if (e.which === 39) {
+                    $('.select')
+                        .removeClass('select')
+                        .parent()
+                        .parent()
+                        .next()
+                        .children()
+                        .children()
+                        .not('.player1')
+                        .not('.player2')
+                        .last()
+                        .addClass('select');
+                }
+                if (e.which === 37) {
+                    $('.select')
+                        .removeClass('select')
+                        .parent()
+                        .parent()
+                        .prev()
+                        .children()
+                        .children()
+                        .not('.player1')
+                        .not('.player2')
+                        .last()
+                        .addClass('select');
+                }
             }
-            if (e.which === 37) {
-                col.last()
-                    .children()
-                    .children()
-                    .not('.player1')
-                    .not('.player2')
-                    .last()
-                    .addClass('select');
+            if (e.which === 13) {
+                gameMove(e, 'enter');
             }
-        } else {
-            if (e.which === 39) {
-                $('.select')
-                    .removeClass('select')
-                    .parent()
-                    .parent()
-                    .next()
-                    .children()
-                    .children()
-                    .not('.player1')
-                    .not('.player2')
-                    .last()
-                    .addClass('select');
-            }
-            if (e.which === 37) {
-                $('.select')
-                    .removeClass('select')
-                    .parent()
-                    .parent()
-                    .prev()
-                    .children()
-                    .children()
-                    .not('.player1')
-                    .not('.player2')
-                    .last()
-                    .addClass('select');
-            }
-        }
-        if (e.which === 13) {
-            gameMove(e, 'enter');
-        }
-    });
+        });
+    }
+    keydownEvents();
     function select() {
         col.on('mouseenter click', function() {
             var element = $(this),

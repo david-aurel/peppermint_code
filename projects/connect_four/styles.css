@@ -18,7 +18,7 @@
     height: 14px;
     background: #5260ff;
     border-radius: 50%;
-    transition: 1s;
+    transition: 0.5s;
     /* transparent with overflow border (potentially useful for animations) */
     /* transform: translate(-15px, -15px); */
     /* border: 20px solid red; */
@@ -54,12 +54,16 @@
 } */
 
 .select {
-    height: 20px;
-    width: 20px;
-    transition: 0.2s;
+    height: 25px;
+    width: 25px;
+    transition: 0.1s;
 }
 
 .lose {
     height: 30px;
     width: 30px;
+}
+
+.victory {
+    display: none;
 }
