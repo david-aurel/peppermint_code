@@ -166,8 +166,9 @@
                     winningPieces.forEach(function(item) {
                         item.css({ border: '3px solid goldenrod' });
                     });
-                    $('.column').off();
-                    resetButton.css({ visibility: 'visible' });
+                    $('.column').off('click');
+                    // $(document).off('keydown');
+                    // resetButton.css({ visibility: 'visible' });
                     return true;
                 }
             } else {
@@ -246,10 +247,11 @@
         // resetButton.css({ visibility: 'hidden' });
         if (!victory.html('')) {
             victory.html('');
-            $('.column').on('click', function(e) {
-                gameMove(e);
-            });
             select();
         }
+        $('.column').off('click');
+        $('.column').on('click', function(e) {
+            gameMove(e);
+        });
     }
 })();

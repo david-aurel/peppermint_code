@@ -6,18 +6,17 @@
 }
 
 .slot {
-    width: 50px;
-    height: 50px;
-    background-color: black;
+    width: 80px;
+    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .hole {
-    width: 35px;
-    height: 35px;
-    background: rgb(255, 255, 255);
+    width: 14px;
+    height: 14px;
+    background: #5260ff;
     border-radius: 50%;
     /* transparent with overflow border (potentially useful for animations) */
     /* transform: translate(-15px, -15px); */
@@ -36,16 +35,16 @@
 
 .player1,
 .player2 {
-    width: 40px;
-    height: 40px;
-    transition: 0.1s;
+    width: 50px;
+    height: 50px;
+    transition: 0.2s;
 }
 .player1 {
-    background: tomato;
+    background: #f84848;
 }
 
 .player2 {
-    background: green;
+    background: #38a858;
 }
 
 /* .select .holes:last-of-type {
@@ -53,5 +52,7 @@
 } */
 
 .select {
-    background: yellow;
+    height: 18px;
+    width: 18px;
+    transition: 0.2s;
 }
