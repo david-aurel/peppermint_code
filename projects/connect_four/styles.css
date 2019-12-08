@@ -2,6 +2,7 @@
     box-sizing: border-box;
 }
 .board {
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     height: 450px;
@@ -107,7 +108,7 @@
 #sidebar {
     margin-left: 50px;
     height: 100%;
-    padding-top: 20px;
+    margin-top: 25px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -153,5 +154,5 @@
 }
 
 .playerDisplay {
-    margin: 60px 0 40px 0;
+    margin: 60px 0 50px 0;
 }
