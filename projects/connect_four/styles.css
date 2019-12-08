@@ -4,6 +4,7 @@
 .board {
     display: flex;
     justify-content: center;
+    height: 450px;
 }
 
 .slot {
@@ -41,12 +42,12 @@
     transition: 0.2s;
 }
 .player1,
-#player1Logo {
+.player1Logo {
     background: #f84848;
 }
 
 .player2,
-#player2Logo {
+.player2Logo {
     background: #38a858;
 }
 
@@ -73,48 +74,84 @@
     display: inline-block;
     border-radius: 50%;
     cursor: pointer;
-    margin: 14px 0 30px 0;
     font-size: 1.5rem;
     -webkit-appearance: none;
     -moz-appearance: none;
+    width: 80px;
+    height: 80px;
 }
 
-.reset,
-#player1Logo,
-#player2Logo {
+.reset:focus {
+    outline: none;
+}
+
+.player1Logo,
+.player2Logo {
     height: 50px;
     width: 50px;
 }
 
-#player1,
-#player2 {
+.player1Display,
+.player2Display {
     display: flex;
     align-items: center;
-    width: 200px;
+    width: 250px;
     height: 50px;
     margin-bottom: 10px;
-    font-family: sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 1.6em;
     font-weight: bold;
-    transition: 1s;
+    transition: 0.3s;
 }
 
 #sidebar {
+    margin-left: 50px;
+    height: 100%;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
-    margin-left: 30px;
+    justify-content: center;
 }
 
-#player1Logo,
-#player2Logo {
+.player1Logo,
+.player2Logo {
     border-radius: 50%;
     margin-right: 10px;
+    transition: 0.3s;
 }
 
-#player1 p {
+.player1Display p,
+.score1 {
     color: #f84848;
 }
 
-#player2 p {
+.player2Display p,
+.score2 {
     color: #38a858;
+}
+
+.inactive {
+    opacity: 0.2;
+}
+.inactive p {
+    font-size: 0.8em;
+}
+.inactive .player1Logo,
+.inactive .player2Logo {
+    height: 40px;
+    width: 40px;
+}
+
+.inactive {
+    transition: 0.3s;
+}
+
+.score {
+    font-size: 7em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.playerDisplay {
+    margin: 60px 0 40px 0;
 }

@@ -17,3 +17,7 @@ body {
 .player2 {
     border: none;
 }
+
+.score {
+    color: rgb(199, 199, 199);
+}
