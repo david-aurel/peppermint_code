@@ -1,9 +1,11 @@
 (() => {
-    var victory = $('.victory h1'),
-        resetButton = $('.reset');
+    var resetButton = $('.reset');
     var currentPlayer = 'player1';
     var holes = $('.hole');
     var col = $('.column');
+    var victory = false;
+    var p1Score = 0;
+    var p2Score = 0;
 
     //column selection for mouse
     col.on('click', function(e) {
@@ -138,21 +140,24 @@
         var winArr1 = getWinningArray(currentItemCoord, currentItemCoord2)[0];
         var winArr2 = getWinningArray(currentItemCoord, currentItemCoord2)[1];
 
-        if (checkForVictory(holesInCol)) {
-            //do the victory dance
-            victory.html(currentPlayer + ' won (four in a column)');
-        } else if (checkForVictory(holesInRow)) {
-            //do the victory dance
-            victory.html(currentPlayer + ' won (four in a row)');
-        } else if (
+        if (
+            checkForVictory(holesInCol) ||
+            checkForVictory(holesInRow) ||
             checkForDiagonalVictory(winArr1) ||
             checkForDiagonalVictory(winArr2)
         ) {
-            victory.html(currentPlayer + ' won (diagonal)');
+            $('.' + currentPlayer + 'Display' + ' p').append(' won!');
+            if (currentPlayer == 'player1') {
+                p1Score++;
+            } else {
+                p2Score++;
+            }
+            $('.score1').html(p1Score);
+            $('.score2').html(p2Score);
         } else if (holes.not('.player1').not('.player2').length === 0) {
-            victory.html('tie!');
-            // resetButton.css({ visibility: 'visible' });
+            alert('its a tie');
         }
+
         switchPlayers();
     }
 
@@ -179,6 +184,7 @@
                         .not('.player2')
                         .css({ opacity: 0.3 });
                     col.off();
+                    victory = true;
                     return true;
                 }
             } else {
@@ -235,6 +241,7 @@
                         .not('.player1')
                         .not('.player2')
                         .css({ opacity: 0.3 });
+                    victory = true;
                     return true;
                 }
             } else {
@@ -248,26 +255,33 @@
     function switchPlayers() {
         if (currentPlayer == 'player1') {
             currentPlayer = 'player2';
-            $('#player1').css({ opacity: 0.3 });
-            $('#player2').css({ opacity: 1 });
+            if (!victory) {
+                $('.player1Display').addClass('inactive');
+                $('.player2Display').removeClass('inactive');
+            }
         } else {
             currentPlayer = 'player1';
-            $('#player2').css({ opacity: 0.3 });
-            $('#player1').css({ opacity: 1 });
+            if (!victory) {
+                $('.player2Display').addClass('inactive');
+                $('.player1Display').removeClass('inactive');
+            }
         }
     }
 
     // reset function
     function reset() {
+        victory = false;
         for (var i = 0; i < holes.length; i++) {
             holes.css({ opacity: 1 });
             holes.eq(i).removeClass('player1 player2 win lose');
         }
         holes.removeClass('select');
-        // resetButton.css({ visibility: 'hidden' });
-        if (!victory.html('')) {
-            victory.html('');
-        }
+
+        //reset display current player
+        $('.player1Display p').html('Player 1');
+        $('.player2Display p').html('Player 2');
+        $('.inactive').removeClass('inactive');
+
         $('.column').off();
         $('.column').on('click', function(e) {
             gameMove(e);
@@ -275,6 +289,8 @@
         $(document).off('keydown');
         keydownEvents();
         select();
+        switchPlayers();
+        switchPlayers();
     }
 
     // toggle stylesheets
