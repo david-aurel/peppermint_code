@@ -3,6 +3,7 @@
 }
 .board {
     display: flex;
+    justify-content: center;
 }
 
 .slot {
@@ -16,7 +17,6 @@
 .hole {
     width: 14px;
     height: 14px;
-    background: #5260ff;
     border-radius: 50%;
     transition: 0.5s;
     /* transparent with overflow border (potentially useful for animations) */
@@ -42,7 +42,6 @@
 }
 .player1 {
     background: #f84848;
-    border: none;
 }
 
 .player2 {
@@ -66,4 +65,16 @@
 
 .victory {
     display: none;
+}
+
+.reset {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 14px 30px;
+    font-size: 1.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
