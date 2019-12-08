@@ -87,6 +87,11 @@
     }
     select();
 
+    // reset button listener
+    resetButton.on('click', function() {
+        reset();
+    });
+
     // main game function
     function gameMove(e, enter) {
         var col;
@@ -247,8 +252,4 @@
             select();
         }
     }
-    // reset button listener
-    resetButton.on('click', function() {
-        reset();
-    });
 })();
