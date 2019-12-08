@@ -13,28 +13,52 @@
     //column selection for keyboard
     $(document).on('keydown', function(e) {
         // if no hole has it, add selected class to first hole
-        if (!col.hasClass('select')) {
+        if (!holes.is('.select')) {
             if (e.which === 39) {
-                col.eq(0).addClass('select');
+                col.eq(0)
+                    .children()
+                    .children()
+                    .not('.player1')
+                    .not('.player2')
+                    .last()
+                    .addClass('select');
             }
             if (e.which === 37) {
-                col.last().addClass('select');
+                col.last()
+                    .children()
+                    .children()
+                    .not('.player1')
+                    .not('.player2')
+                    .last()
+                    .addClass('select');
             }
         } else {
-            if (!col.last().hasClass('select'))
-                if (e.which === 39) {
-                    $('.select')
-                        .removeClass('select')
-                        .next()
-                        .addClass('select');
-                }
-            if (!col.eq(0).hasClass('select'))
-                if (e.which === 37) {
-                    $('.select')
-                        .removeClass('select')
-                        .prev()
-                        .addClass('select');
-                }
+            if (e.which === 39) {
+                $('.select')
+                    .removeClass('select')
+                    .parent()
+                    .parent()
+                    .next()
+                    .children()
+                    .children()
+                    .not('.player1')
+                    .not('.player2')
+                    .last()
+                    .addClass('select');
+            }
+            if (e.which === 37) {
+                $('.select')
+                    .removeClass('select')
+                    .parent()
+                    .parent()
+                    .prev()
+                    .children()
+                    .children()
+                    .not('.player1')
+                    .not('.player2')
+                    .last()
+                    .addClass('select');
+            }
         }
         if (e.which === 13) {
             gameMove(e, 'enter');
@@ -69,7 +93,9 @@
         if (!enter) {
             col = $(e.currentTarget);
         } else {
-            col = $('.select');
+            col = $('.select')
+                .parent()
+                .parent();
         }
 
         var slotsInCol = col.children(),
@@ -81,6 +107,13 @@
                 !holesInCol.eq(i).hasClass('player2')
             ) {
                 holesInCol.eq(i).addClass(currentPlayer);
+                holesInCol.eq(i).removeClass('select');
+                holesInCol
+                    .eq(i)
+                    .parent()
+                    .prev()
+                    .children()
+                    .addClass('select');
                 break;
             }
         }
@@ -110,7 +143,7 @@
             victory.html(currentPlayer + ' won (diagonal)');
         } else if (holes.not('.player1').not('.player2').length === 0) {
             victory.html('tie!');
-            resetButton.css({ visibility: 'visible' });
+            // resetButton.css({ visibility: 'visible' });
         }
         switchPlayers();
     }
@@ -204,13 +237,15 @@
             holes.eq(i).removeClass('player1 player2');
             holes.eq(i).css({ border: 'none' });
         }
-        victory.html('');
         holes.removeClass('select');
-        resetButton.css({ visibility: 'hidden' });
-        $('.column').on('click', function(e) {
-            gameMove(e);
-        });
-        select();
+        // resetButton.css({ visibility: 'hidden' });
+        if (!victory.html('')) {
+            victory.html('');
+            $('.column').on('click', function(e) {
+                gameMove(e);
+            });
+            select();
+        }
     }
     // reset button listener
     resetButton.on('click', function() {
