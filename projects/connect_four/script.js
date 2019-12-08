@@ -146,7 +146,7 @@
             checkForDiagonalVictory(winArr1) ||
             checkForDiagonalVictory(winArr2)
         ) {
-            $('.' + currentPlayer + 'Display' + ' p').append(' won!');
+            $('.' + currentPlayer + 'Display' + ' p').append(' wins!');
             if (currentPlayer == 'player1') {
                 p1Score++;
             } else {
