@@ -164,11 +164,17 @@
                 winningPieces.push(slots.eq(i));
                 if (count == 4) {
                     winningPieces.forEach(function(item) {
-                        item.css({ border: '3px solid goldenrod' });
+                        item.addClass('win');
                     });
+                    $('.player1:not(.win').addClass('lose');
+                    $('.player2:not(.win').addClass('lose');
                     $('.column').off('click');
                     // $(document).off('keydown');
                     // resetButton.css({ visibility: 'visible' });
+                    holes
+                        .not('.player1')
+                        .not('.player2')
+                        .css({ opacity: 0 });
                     return true;
                 }
             } else {
@@ -215,10 +221,16 @@
                 winningPieces.push(slots[i]);
                 if (count == 4) {
                     winningPieces.forEach(function(item) {
-                        item.style.border = '3px solid goldenrod';
+                        item.classList.add('win');
                     });
+                    $('.player1:not(.win').addClass('lose');
+                    $('.player2:not(.win').addClass('lose');
                     $('.column').off();
-                    resetButton.css({ visibility: 'visible' });
+
+                    holes
+                        .not('.player1')
+                        .not('.player2')
+                        .css({ opacity: 0 });
                     return true;
                 }
             } else {
@@ -240,8 +252,8 @@
     // reset function
     function reset() {
         for (var i = 0; i < holes.length; i++) {
-            holes.eq(i).removeClass('player1 player2');
-            holes.eq(i).css({ border: 'none' });
+            holes.css({ opacity: 1 });
+            holes.eq(i).removeClass('player1 player2 win lose');
         }
         holes.removeClass('select');
         // resetButton.css({ visibility: 'hidden' });
