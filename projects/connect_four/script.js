@@ -177,7 +177,8 @@
                     holes
                         .not('.player1')
                         .not('.player2')
-                        .css({ opacity: 0 });
+                        .css({ opacity: 0.3 });
+                    col.off();
                     return true;
                 }
             } else {
@@ -233,7 +234,7 @@
                     holes
                         .not('.player1')
                         .not('.player2')
-                        .css({ opacity: 0 });
+                        .css({ opacity: 0.3 });
                     return true;
                 }
             } else {
@@ -247,8 +248,12 @@
     function switchPlayers() {
         if (currentPlayer == 'player1') {
             currentPlayer = 'player2';
+            $('#player1').css({ opacity: 0.3 });
+            $('#player2').css({ opacity: 1 });
         } else {
             currentPlayer = 'player1';
+            $('#player2').css({ opacity: 0.3 });
+            $('#player1').css({ opacity: 1 });
         }
     }
 
@@ -262,11 +267,24 @@
         // resetButton.css({ visibility: 'hidden' });
         if (!victory.html('')) {
             victory.html('');
-            select();
         }
-        $('.column').off('click');
+        $('.column').off();
         $('.column').on('click', function(e) {
             gameMove(e);
         });
+        $(document).off('keydown');
+        keydownEvents();
+        select();
     }
+
+    // toggle stylesheets
+    $(document).on('keydown', function(e) {
+        if (e.which == 78) {
+            if ($('#toggleStylesheet').attr('href') == 'light.css') {
+                $('#toggleStylesheet').attr('href', 'dark.css');
+            } else {
+                $('#toggleStylesheet').attr('href', 'light.css');
+            }
+        }
+    });
 })();

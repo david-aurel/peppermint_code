@@ -40,11 +40,13 @@
     height: 50px;
     transition: 0.2s;
 }
-.player1 {
+.player1,
+#player1Logo {
     background: #f84848;
 }
 
-.player2 {
+.player2,
+#player2Logo {
     background: #38a858;
 }
 
@@ -69,12 +71,50 @@
 
 .reset {
     display: inline-block;
-    height: 50px;
-    width: 50px;
     border-radius: 50%;
     cursor: pointer;
-    margin: 14px 30px;
+    margin: 14px 0 30px 0;
     font-size: 1.5rem;
     -webkit-appearance: none;
     -moz-appearance: none;
+}
+
+.reset,
+#player1Logo,
+#player2Logo {
+    height: 50px;
+    width: 50px;
+}
+
+#player1,
+#player2 {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    margin-bottom: 10px;
+    font-family: sans-serif;
+    font-size: 1.6em;
+    font-weight: bold;
+    transition: 1s;
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+#player1Logo,
+#player2Logo {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#player1 p {
+    color: #f84848;
+}
+
+#player2 p {
+    color: #38a858;
 }
