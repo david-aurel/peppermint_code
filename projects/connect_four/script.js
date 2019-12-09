@@ -142,8 +142,8 @@
             holesInRow = slotsInRow.children();
 
         // get winning array
-        var currentItemCoord = $(e.currentTarget).index() - i;
-        var currentItemCoord2 = $(e.currentTarget).index() + i;
+        var currentItemCoord = col.index() - i;
+        var currentItemCoord2 = col.index() + i;
         var winArr1 = getWinningArray(currentItemCoord, currentItemCoord2)[0];
         var winArr2 = getWinningArray(currentItemCoord, currentItemCoord2)[1];
 
