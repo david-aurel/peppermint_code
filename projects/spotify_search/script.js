@@ -15,19 +15,30 @@
             },
             success: function(response) {
                 //this runs when we get a response from the API
-                $('#results-header').html('Results for "' + userInput + '"');
-                console.log('response: ', response);
                 response = response.artists || response.albums;
-
+                console.log('response: ', response);
+                if (response.items.length > 0) {
+                    $('#results-header').html(
+                        'Results for "' + userInput + '"'
+                    );
+                } else {
+                    $('#results-header').html('No results');
+                }
                 var myHtml = '';
                 for (var i = 0; i < response.items.length; i++) {
                     // console.log(response.items[i].name);
-                    myHtml += '<div>' + response.items[i].name + '</div>';
 
-                    var imageUrl = 'default.jpg';
+                    var imageUrl = 'default.png';
                     if (response.items[i].images[0]) {
                         imageUrl = response.items[i].images[0].url;
                     }
+                    myHtml +=
+                        '<div class="result"><img src="' +
+                        imageUrl +
+                        '">' +
+                        '<p>' +
+                        response.items[i].name +
+                        '</p></div>';
                 }
                 $('#results-container').html(myHtml);
 

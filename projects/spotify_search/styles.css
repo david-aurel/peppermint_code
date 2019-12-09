@@ -1,3 +1,21 @@
 * {
     box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+select {
+    margin-right: 10px;
+}
+
+.result {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.result img {
+    height: 100px;
+    margin: 20px 20px 20px 0;
+    border: 1px solid black;
+    padding: 5px;
 }
