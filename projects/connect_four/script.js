@@ -66,6 +66,13 @@
             if (e.which === 13) {
                 gameMove(e, 'enter');
             }
+            if (e.which == 78) {
+                if ($('#toggleStylesheet').attr('href') == 'light.css') {
+                    $('#toggleStylesheet').attr('href', 'dark.css');
+                } else {
+                    $('#toggleStylesheet').attr('href', 'light.css');
+                }
+            }
         });
     }
     keydownEvents();
@@ -143,8 +150,8 @@
         if (
             checkForVictory(holesInCol) ||
             checkForVictory(holesInRow) ||
-            checkForDiagonalVictory(winArr1) ||
-            checkForDiagonalVictory(winArr2)
+            checkForVictory(winArr1) ||
+            checkForVictory(winArr2)
         ) {
             $('.' + currentPlayer + 'Display' + ' p').append(' wins!');
             if (currentPlayer == 'player1') {
@@ -197,8 +204,8 @@
     //calculate diagonal winning array
     function getWinningArray(currentItemCoord, currentItemCoord2) {
         //check each item for its coordinates
-        var winArr1 = [],
-            winArr2 = [];
+        var winArr1 = $(),
+            winArr2 = $();
         for (let i = 0; i < holes.length; i++) {
             let row = holes
                 .eq(i)
@@ -212,43 +219,13 @@
 
             //put all the item with the corresponding coordinates in an array and return it
             if (col - row == currentItemCoord) {
-                winArr1.push(holes[i]);
+                winArr1 = winArr1.add(holes.eq(i));
             }
             if (col + row == currentItemCoord2) {
-                winArr2.push(holes[i]);
+                winArr2 = winArr2.add(holes.eq(i));
             }
         }
         return [winArr1, winArr2];
-    }
-    //check for diagnoal victory
-    function checkForDiagonalVictory(slots) {
-        var count = 0,
-            winningPieces = [];
-        //loop through the slots and check how many have the class
-        for (var i = 0; i < slots.length; i++) {
-            if (slots[i].classList.contains(currentPlayer)) {
-                count++;
-                winningPieces.push(slots[i]);
-                if (count == 4) {
-                    winningPieces.forEach(function(item) {
-                        item.classList.add('win');
-                    });
-                    $('.player1:not(.win').addClass('lose');
-                    $('.player2:not(.win').addClass('lose');
-                    $('.column').off();
-
-                    holes
-                        .not('.player1')
-                        .not('.player2')
-                        .css({ opacity: 0.3 });
-                    victory = true;
-                    return true;
-                }
-            } else {
-                count = 0;
-                winningPieces = [];
-            }
-        }
     }
 
     // switch players function
@@ -292,15 +269,4 @@
         switchPlayers();
         switchPlayers();
     }
-
-    // toggle stylesheets
-    $(document).on('keydown', function(e) {
-        if (e.which == 78) {
-            if ($('#toggleStylesheet').attr('href') == 'light.css') {
-                $('#toggleStylesheet').attr('href', 'dark.css');
-            } else {
-                $('#toggleStylesheet').attr('href', 'light.css');
-            }
-        }
-    });
 })();
