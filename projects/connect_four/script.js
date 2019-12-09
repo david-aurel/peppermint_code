@@ -1,18 +1,19 @@
 (() => {
-    var resetButton = $('.reset');
-    var currentPlayer = 'player1';
-    var holes = $('.hole');
-    var col = $('.column');
-    var victory = false;
-    var p1Score = 0;
-    var p2Score = 0;
+    var resetButton = $('.reset'),
+        currentPlayer = 'player1',
+        holes = $('.hole'),
+        col = $('.column'),
+        victory = false,
+        p1Score = 0,
+        p2Score = 0,
+        stylesheet = localStorage.getItem('stylesheet');
 
     //column selection for mouse
     col.on('click', function(e) {
         gameMove(e);
     });
 
-    //column selection for keyboard
+    //column selection for keyboard and stylesheet switch
     function keydownEvents() {
         $(document).on('keydown', function(e) {
             // if no hole has it, add selected class to first hole
@@ -66,16 +67,23 @@
             if (e.which === 13) {
                 gameMove(e, 'enter');
             }
+            if (e.which === 82) {
+                reset();
+            }
             if (e.which == 78) {
-                if ($('#toggleStylesheet').attr('href') == 'light.css') {
+                if (localStorage.getItem('stylesheet') == 'light') {
+                    localStorage.setItem('stylesheet', 'dark');
                     $('#toggleStylesheet').attr('href', 'dark.css');
                 } else {
-                    $('#toggleStylesheet').attr('href', 'light.css');
+                    localStorage.setItem('stylesheet', 'light');
+                    initTheme();
                 }
             }
         });
     }
     keydownEvents();
+
+    // select for mouse
     function select() {
         col.on('mouseenter click', function() {
             var element = $(this),
@@ -184,7 +192,7 @@
                     $('.player1:not(.win').addClass('lose');
                     $('.player2:not(.win').addClass('lose');
                     $('.column').off('click');
-                    // $(document).off('keydown');
+                    $(document).off('keydown');
                     // resetButton.css({ visibility: 'visible' });
                     holes
                         .not('.player1')
@@ -266,7 +274,21 @@
         $(document).off('keydown');
         keydownEvents();
         select();
+        resetButton.blur();
         switchPlayers();
         switchPlayers();
     }
+
+    // initialize stylesheet
+    function initTheme() {
+        if (!stylesheet) {
+            stylesheet == localStorage.setItem('stylesheet', 'light');
+        }
+        if (localStorage.getItem('stylesheet') == 'light') {
+            $('#toggleStylesheet').attr('href', 'light.css');
+        } else {
+            $('#toggleStylesheet').attr('href', 'dark.css');
+        }
+    }
+    initTheme();
 })();
