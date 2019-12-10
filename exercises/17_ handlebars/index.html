@@ -8,6 +8,29 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- content will be injected here -->
+    <div class="authors-info"></div>
+
+    <!-- handlebar code -->
+    <script id="authors" type="text/x-handlebars-template">
+        {{#authors}}
+        <div class="container">
+            <div class="card">
+                <div class="img"><img src="{{photo}}"></div>
+                <p class="name">{{name}}</p>
+                <p>born {{born}}, died {{died}}</p>
+                   <p class="selected-writings">
+                       selected writings:
+                       {{#selectedWritings}}
+                       <span>{{this}} / </span>
+                       {{/selectedWritings}}
+                   </p>
+                <p class="quote">"{{quote}}"</p>
+            </div>
+        </div>
+        {{/authors}}
+    </script>
     
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
