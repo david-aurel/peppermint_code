@@ -17,6 +17,13 @@
                     );
                     $('#results-container').html('');
                     $('#more-button').removeClass('invisible');
+
+                    if (
+                        window.location.search.indexOf('scroll=infinite') != -1
+                    ) {
+                        $('#more-button').addClass('invisible');
+                        setTimeout(infiniteScroll, 1000);
+                    }
                 } else {
                     $('#results-header').html('No results');
                     $('#more-button').addClass('invisible');
@@ -29,14 +36,8 @@
     });
 
     $('#more-button').on('click', function() {
-        console.log($('input').val(), $('select').val(), nextUrl);
-
         $.ajax({
             url: nextUrl,
-            data: {
-                query: $('input').val(),
-                type: $('select').val()
-            },
             success: function(data) {
                 data = data.artists || data.albums;
                 console.log('data: ', data);
@@ -76,5 +77,29 @@
                 'https://api.spotify.com/v1/search',
                 'https://elegant-croissant.glitch.me/spotify'
             );
+    }
+
+    function infiniteScroll() {
+        // calculate bottom page by pageheight - scroll + windowheight
+        var pageBottom =
+            $(document).height() - $(window).height() <=
+            $(window).scrollTop() + 100;
+
+        setTimeout(function() {
+            if (pageBottom) {
+                $.ajax({
+                    url: nextUrl,
+                    success: function(data) {
+                        data = data.artists || data.albums;
+                        console.log('data: ', data);
+                        getResultsHtml(data);
+                        getNextUrl(data.next);
+                        infiniteScroll();
+                    }
+                });
+            } else {
+                infiniteScroll();
+            }
+        }, 500);
     }
 })();
