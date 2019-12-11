@@ -7,3 +7,17 @@ h4 {
     margin-top: 40px;
     margin-bottom: 10px;
 }
+
+.card {
+    display: flex;
+    margin: 20px 0;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+img {
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
