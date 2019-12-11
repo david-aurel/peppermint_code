@@ -24,7 +24,10 @@
     <!-- Handlebar template -->
     <script id="repos" type="text/x-handlebars-template">
         {{#data}}
-            <p class="full-name">{{full_name}}</p>
+            <div class="card">
+                <img src="{{owner.avatar_url}}">
+                <p class="full-name">{{full_name}}</p>
+            </div>
         {{/data}}
     </script>
 

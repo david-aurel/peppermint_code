@@ -22,6 +22,8 @@
                 authorization: 'Basic ' + btoa(username + ':' + password)
             },
             success: function(response) {
+                console.log(response);
+
                 var reposTemplate = Handlebars.templates.repos({
                     data: response
                 });
