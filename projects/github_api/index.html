@@ -18,17 +18,28 @@
     <button>submit</button>
 
 
-    <!-- empty div for data to be displayed -->
+    <!-- empty div for repos to be displayed -->
     <div class="repos-container"></div>
 
     <!-- Handlebar template -->
     <script id="repos" type="text/x-handlebars-template">
         {{#data}}
-            <div class="card">
-                <img src="{{owner.avatar_url}}">
-                <p class="full-name">{{full_name}}</p>
+            <div class="card" id={{name}}>
+                <div class='title'>
+                    <img src="{{owner.avatar_url}}">
+                    <p class="full-name">{{full_name}}</p>
+                </div>
             </div>
         {{/data}}
+    </script>
+    <script id="commits" type="text/x-handlebars-template">
+        <div class='content'>
+            <ol>
+                {{#data}}
+                    <li>{{commit.message}}</li>
+                {{/data}}
+            </ol>
+        </div>
     </script>
 
 

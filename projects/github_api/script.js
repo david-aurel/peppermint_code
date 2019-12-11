@@ -15,7 +15,6 @@
         var userToSearch = $('input[name="user-to-search"]').val();
         var baseUrl = 'https://api.github.com';
         var endpoint = '/users/' + userToSearch + '/repos';
-
         $.ajax({
             url: baseUrl + endpoint,
             headers: {
@@ -28,6 +27,30 @@
                     data: response
                 });
                 $('.repos-container').html(reposTemplate);
+            }
+        });
+    });
+
+    $('.repos-container').on('click', '.card', function() {
+        var element = $(this);
+        var elementId = element.attr('id');
+        var username = $('input[name="username"]').val();
+        var password = $('input[name="password"]').val();
+        var userToSearch = $('input[name="user-to-search"]').val();
+        var baseUrl = 'https://api.github.com';
+        var endpoint = '/repos/' + userToSearch + '/' + elementId + '/commits';
+        $.ajax({
+            url: baseUrl + endpoint,
+            headers: {
+                authorization: 'Basic ' + btoa(username + ':' + password)
+            },
+            success: function(response) {
+                response = response.slice(0, 10);
+
+                var commitsTemplate = Handlebars.templates.commits({
+                    data: response
+                });
+                $('#' + elementId).append(commitsTemplate);
             }
         });
     });
