@@ -10,14 +10,28 @@
 <body>
     
     <h1>github api</h1>
+    <h4>enter your github username and password</h4>
     <input type="text" name="username" placeholder="username">
     <input type="password" name="password" placeholder="password">
+    <h4>enter a github user to search for</h4>
     <input type="text" name="user-to-search" placeholder="user to search">
     <button>submit</button>
 
 
+    <!-- empty div for data to be displayed -->
+    <div class="repos-container"></div>
+
+    <!-- Handlebar template -->
+    <script id="repos" type="text/x-handlebars-template">
+        {{#data}}
+            <p class="full-name">{{full_name}}</p>
+        {{/data}}
+    </script>
+
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
