@@ -21,8 +21,11 @@
             headers: {
                 authorization: 'Basic ' + btoa(username + ':' + password)
             },
-            success: function(data) {
-                console.log(data);
+            success: function(response) {
+                var reposTemplate = Handlebars.templates.repos({
+                    data: response
+                });
+                $('.repos-container').html(reposTemplate);
             }
         });
     });
