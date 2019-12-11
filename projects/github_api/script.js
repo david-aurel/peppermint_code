@@ -9,20 +9,20 @@
     });
     ///////////// HANDLEBAR  /////////////
 
+    var username = $('input[name="username"]');
+    var password = $('input[name="password"]');
+    var userToSearch = $('input[name="user-to-search"]');
+    var baseUrl = 'https://api.github.com';
+
     $('button').on('click', function() {
-        var username = $('input[name="username"]').val();
-        var password = $('input[name="password"]').val();
-        var userToSearch = $('input[name="user-to-search"]').val();
-        var baseUrl = 'https://api.github.com';
-        var endpoint = '/users/' + userToSearch + '/repos';
+        var repoEndpoint = `/users/${userToSearch.val()}/repos`;
         $.ajax({
-            url: baseUrl + endpoint,
+            url: baseUrl + repoEndpoint,
             headers: {
-                authorization: 'Basic ' + btoa(username + ':' + password)
+                authorization:
+                    'Basic ' + btoa(username.val() + ':' + password.val())
             },
             success: function(response) {
-                console.log(response);
-
                 var reposTemplate = Handlebars.templates.repos({
                     data: response
                 });
@@ -35,17 +35,14 @@
         var element = $(this);
         var elementId = element.attr('id');
         var contentOfId = $(`#${elementId} .content`);
-        var username = $('input[name="username"]').val();
-        var password = $('input[name="password"]').val();
-        var userToSearch = $('input[name="user-to-search"]').val();
-        var baseUrl = 'https://api.github.com';
-        var endpoint = '/repos/' + userToSearch + '/' + elementId + '/commits';
+        var commitEndpoint = `/repos/${userToSearch.val()}/${elementId}/commits`;
 
         if (contentOfId.length == 0) {
             $.ajax({
-                url: baseUrl + endpoint,
+                url: baseUrl + commitEndpoint,
                 headers: {
-                    authorization: 'Basic ' + btoa(username + ':' + password)
+                    authorization:
+                        'Basic ' + btoa(username.val() + ':' + password.val())
                 },
                 success: function(response) {
                     response = response.slice(0, 10);
