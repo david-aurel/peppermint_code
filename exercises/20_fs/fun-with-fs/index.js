@@ -15,7 +15,11 @@ function logSizes(path) {
                     if (err) {
                         console.log('error in stat: ', err);
                     } else {
-                        console.log(elementPath, stats.size);
+                        if (files[i].isFile()) {
+                            console.log(elementPath, stats.size);
+                        } else {
+                            logSizes(elementPath);
+                        }
                     }
                 });
             }
