@@ -26,7 +26,7 @@ function logSizes(path) {
     });
 }
 
-// logSizes(filesPath);
+logSizes(filesPath);
 
 // Part 2
 
@@ -44,6 +44,6 @@ function mapSizes(path) {
     }
     return filesMap;
 }
-console.log(mapSizes(filesPath));
 
-mapSizes(filesPath);
+let mapSizesJSON = JSON.stringify(mapSizes(filesPath), null, 4);
+fs.writeFileSync(`${myPath}/files.json`, mapSizesJSON);
