@@ -9,7 +9,16 @@ function logSizes(path) {
         if (err) {
             console.log('error in readdir: ', err);
         } else {
-            console.log(files);
+            for (let i in files) {
+                let elementPath = `${path}/${files[i].name}`;
+                fs.stat(elementPath, (err, stats) => {
+                    if (err) {
+                        console.log('error in stat: ', err);
+                    } else {
+                        console.log(elementPath, stats.size);
+                    }
+                });
+            }
         }
     });
 }
