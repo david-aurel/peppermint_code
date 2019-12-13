@@ -3,7 +3,6 @@ const fs = require('fs'),
     filesPath = myPath + '/files';
 
 // Part 1
-
 function logSizes(path) {
     fs.readdir(path, { withFileTypes: true }, (err, files) => {
         if (err) {
@@ -27,4 +26,18 @@ function logSizes(path) {
     });
 }
 
-logSizes(filesPath);
+// logSizes(filesPath);
+
+// Part 2
+
+function mapSizes(path) {
+    let files = fs.readdirSync(path, { withFileTypes: true }),
+        filesMap = {};
+
+    for (let i in files) {
+        filesMap[`${files[i].name}`] = '';
+    }
+    console.log(filesMap);
+}
+
+mapSizes(filesPath);
