@@ -35,7 +35,9 @@ function mapSizes(path) {
         filesMap = {};
 
     for (let i in files) {
-        filesMap[`${files[i].name}`] = '';
+        let elementPath = `${path}/${files[i].name}`;
+        if (files[i].isFile())
+            filesMap[`${files[i].name}`] = fs.statSync(elementPath).size;
     }
     console.log(filesMap);
 }
