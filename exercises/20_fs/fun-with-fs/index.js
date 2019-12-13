@@ -33,13 +33,17 @@ function logSizes(path) {
 function mapSizes(path) {
     let files = fs.readdirSync(path, { withFileTypes: true }),
         filesMap = {};
-
     for (let i in files) {
-        let elementPath = `${path}/${files[i].name}`;
-        if (files[i].isFile())
-            filesMap[`${files[i].name}`] = fs.statSync(elementPath).size;
+        let elementPath = `${path}/${files[i].name}`,
+            elementName = `${files[i].name}`;
+        if (files[i].isFile()) {
+            filesMap[elementName] = fs.statSync(elementPath).size;
+        } else {
+            filesMap[elementName] = mapSizes(elementPath);
+        }
     }
-    console.log(filesMap);
+    return filesMap;
 }
+console.log(mapSizes(filesPath));
 
 mapSizes(filesPath);
