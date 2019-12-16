@@ -47,6 +47,7 @@ const server = http.createServer((req, res) => {
             res.setHeader('Content-Type', 'text/html');
             res.statusCode = 200;
             res.write(`<a href='/' style='color: ${color}'>Hello ${text}</a>`);
+            res.end();
         });
     }
 });
