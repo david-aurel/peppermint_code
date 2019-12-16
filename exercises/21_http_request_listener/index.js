@@ -1,4 +1,5 @@
-const http = require('http');
+const http = require('http'),
+    querystring = require('querystring');
 
 const server = http.createServer((req, res) => {
     req.on('error', err => console.log('req err', err));
@@ -26,7 +27,8 @@ const server = http.createServer((req, res) => {
             body += chunk;
         });
         req.on('end', () => {
-            console.log(('body: ', body));
+            let parsedBody = querystring.parse(body);
+            console.log('body: ', parsedBody);
             res.statusCode = 302;
             res.setHeader('Location', '/');
             res.end();
