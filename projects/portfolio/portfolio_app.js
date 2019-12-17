@@ -3,7 +3,6 @@ const http = require('http'),
     fs = require('fs'),
     path = require('path'),
     getHtmlString = require('./getHtmlString.js');
-console.log(getHtmlString);
 getHtmlString('david');
 
 http.createServer((req, res) => {
@@ -39,6 +38,13 @@ http.createServer((req, res) => {
             // we want to send back the correct content type
             // we create an object that has the keys of the extensions and the values of the content type names
             // pipe the file the user requested
+            const readStream = fs.createReadStream(`${filePath}`);
+            readStream.pipe(res);
+            readStream.on('error', err => {
+                console.log('error in readStream:', err);
+                res.statusCode = 500;
+                return res.end();
+            });
         } else {
             if (req.url.endsWith('/')) {
                 console.log('its a directory', filePath);
