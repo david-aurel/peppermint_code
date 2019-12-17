@@ -8,21 +8,12 @@ http.createServer((req, res) => {
     req.on('error', () => console.log('error in request'));
     res.on('error', () => console.log('error in response'));
 
-    const readStream = fs.createReadStream(
-        `${__dirname}/../../projects/connect_four/index.html`
-    );
-    readStream.pipe(res);
-
     if (req.method != 'GET') {
         res.statusCode = 405;
         return res.end();
     }
-    console.log(
-        'normalized path: ',
-        path.normalize(`../../projects/connect_four/index.html`)
-    );
 
-    const filePath = `${__dirname}/../../projects/${req.url}`;
+    const filePath = `${__dirname}/../../projects${req.url}`;
 
     if (
         !path
@@ -33,6 +24,35 @@ http.createServer((req, res) => {
         console.log('intruder!!!');
         return res.end();
     }
+
+    fs.stat(filePath, (err, stats) => {
+        if (err) {
+            console.log('error in stat: ', err);
+            res.statusCode = 404;
+            return res.end();
+        }
+        if (stats.isFile()) {
+            console.log('its a file');
+        } else {
+            if (req.url.endsWith('/')) {
+                console.log('its a directory', filePath);
+                const readStream = fs.createReadStream(
+                    `${filePath}/index.html`
+                );
+                res.setHeader('Content-Type', 'text/html');
+                readStream.pipe(res);
+                readStream.on('error', err => {
+                    console.log('error in readStream:', err);
+                    res.statusCode = 500;
+                    return res.end();
+                });
+            } else {
+                res.setHeader('Location', `${req.url}/`);
+                res.statusCode = 302;
+                res.end();
+            }
+        }
+    });
 }).listen(8080, () =>
     console.log('portfolio server is listening on port 8080')
 );
