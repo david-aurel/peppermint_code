@@ -34,7 +34,7 @@ http.createServer((req, res) => {
             .startsWith(`/Users/David/Desktop/Code/peppermint-code/projects/`)
     ) {
         res.statusCode = 403;
-        console.log('intruder!!!');
+        console.log('forbidden url');
         return res.end();
     }
 
@@ -58,16 +58,21 @@ http.createServer((req, res) => {
             });
         } else {
             if (req.url.endsWith('/')) {
-                const readStream = fs.createReadStream(
-                    `${filePath}/index.html`
-                );
-                res.setHeader('Content-Type', 'text/html');
-                readStream.pipe(res);
-                readStream.on('error', err => {
-                    console.log('error in readStream:', err);
-                    res.statusCode = 500;
-                    return res.end();
-                });
+                if (fs.existsSync(`${filePath}/index.html`)) {
+                    const readStream = fs.createReadStream(
+                        `${filePath}/index.html`
+                    );
+                    res.setHeader('Content-Type', 'text/html');
+                    readStream.pipe(res);
+                    readStream.on('error', err => {
+                        console.log('error in readStream:', err);
+                        res.statusCode = 500;
+                        return res.end();
+                    });
+                } else {
+                    res.statusCode = 404;
+                    res.end();
+                }
             } else {
                 res.setHeader('Location', `${req.url}/`);
                 res.statusCode = 302;
