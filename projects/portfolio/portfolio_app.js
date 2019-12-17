@@ -1,7 +1,10 @@
 // require modules
 const http = require('http'),
     fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    getHtmlString = require('./getHtmlString.js');
+console.log(getHtmlString);
+getHtmlString('david');
 
 http.createServer((req, res) => {
     // handling errors
@@ -32,7 +35,10 @@ http.createServer((req, res) => {
             return res.end();
         }
         if (stats.isFile()) {
-            console.log('its a file');
+            console.log('its a file: ', path.extname(filePath));
+            // we want to send back the correct content type
+            // we create an object that has the keys of the extensions and the values of the content type names
+            // pipe the file the user requested
         } else {
             if (req.url.endsWith('/')) {
                 console.log('its a directory', filePath);
