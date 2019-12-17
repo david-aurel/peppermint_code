@@ -20,7 +20,7 @@ function getHtmlString(path) {
         if (files[i] == 'portfolio') {
             html += `<li><a href="/">${files[i]}</a></li>`;
         } else {
-            html += `<li><a href="/${files[i]}">${files[i]}</a></li>`;
+            html += `<li><a href="/${files[i]}/">${files[i]}</a></li>`;
         }
     }
     html += `       </ul>
