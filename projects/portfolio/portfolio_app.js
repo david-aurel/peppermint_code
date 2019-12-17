@@ -3,7 +3,8 @@ const http = require('http'),
     fs = require('fs'),
     path = require('path'),
     getHtmlString = require('./getHtmlString.js');
-getHtmlString('david');
+
+let html = getHtmlString(`${__dirname}/../`);
 
 const contentTypes = {
     '.html': 'text/html',
@@ -24,6 +25,13 @@ http.createServer((req, res) => {
     if (req.method != 'GET') {
         res.statusCode = 405;
         return res.end();
+    }
+
+    if (req.url === '/') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'text/html');
+        res.write(html);
+        res.end();
     }
 
     const filePath = `${__dirname}/../../projects${req.url}`;
