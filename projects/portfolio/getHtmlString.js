@@ -23,7 +23,8 @@ function getHtmlString(path) {
             html += `<li><a href="/${files[i]}">${files[i]}</a></li>`;
         }
     }
-    html += `       </ul> 
+    html += `       </ul>
+                    <img src="portfolio/smith.png" style="width: 211px; position: absolute; transform: scaleX(-1); top: 100px;left: 225px;">
                         </body>
                     </html>`;
     return html;
