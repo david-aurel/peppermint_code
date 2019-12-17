@@ -5,6 +5,17 @@ const http = require('http'),
     getHtmlString = require('./getHtmlString.js');
 getHtmlString('david');
 
+const contentTypes = {
+    '.html': 'text/html',
+    '.css': 'text/css',
+    '.js': 'text/javascript',
+    '.json': 'application/json',
+    '.gif': 'image/gif',
+    '.jpg': 'image/jpeg',
+    '.png': 'image/png',
+    '.svg': 'image/svg+xml'
+};
+
 http.createServer((req, res) => {
     // handling errors
     req.on('error', () => console.log('error in request'));
@@ -34,9 +45,9 @@ http.createServer((req, res) => {
             return res.end();
         }
         if (stats.isFile()) {
-            console.log('its a file: ', path.extname(filePath));
             // we want to send back the correct content type
-            // we create an object that has the keys of the extensions and the values of the content type names
+            res.setHeader('Content-Type', contentTypes[path.extname(filePath)]);
+
             // pipe the file the user requested
             const readStream = fs.createReadStream(`${filePath}`);
             readStream.pipe(res);
@@ -47,7 +58,6 @@ http.createServer((req, res) => {
             });
         } else {
             if (req.url.endsWith('/')) {
-                console.log('its a directory', filePath);
                 const readStream = fs.createReadStream(
                     `${filePath}/index.html`
                 );
