@@ -42,6 +42,8 @@ app.post('/cookies', (req, res) => {
     }
 });
 
+app.use('/spotify_search', auth);
+
 app.use(function cookieCheck(req, res, next) {
     if (req.cookies.cookiesAccepted) {
         next();
@@ -52,8 +54,6 @@ app.use(function cookieCheck(req, res, next) {
         res.redirect('/cookies');
     }
 });
-
-app.use('/spotify_search', auth);
 
 app.use(express.static(__dirname + '/../'));
 
