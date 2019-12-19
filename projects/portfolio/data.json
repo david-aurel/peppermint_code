@@ -1,17 +1,50 @@
 [
     {
-        "name": "Andrea"
+        "title": "Connect Four",
+        "directory": "`${__dirname}/../connect_four"
     },
     {
-        "name": "Pete"
+        "title": "GitHub API",
+        "directory": "`${__dirname}/../github_api"
     },
     {
-        "name": "Ivana"
+        "title": "Carousel",
+        "directory": "`${__dirname}/../kitty_carousel"
     },
     {
-        "name": "David"
+        "title": "Spotify Search",
+        "directory": "`${__dirname}/../spotify_search"
     },
     {
-        "name": "Merle"
+        "title": "Reichstag Page",
+        "directory": "`${__dirname}/../reichstag"
+    },
+    {
+        "title": "Incremental Search",
+        "directory": "`${__dirname}/../incremental_search"
+    },
+    {
+        "title": "JSON Validation",
+        "directory": "`${__dirname}/../json_validation"
+    },
+    {
+        "title": "Racing Game",
+        "directory": "`${__dirname}/../racing_demo"
+    },
+    {
+        "title": "Panes",
+        "directory": "`${__dirname}/../panes"
+    },
+    {
+        "title": "Ticker",
+        "directory": "`${__dirname}/../ticker"
+    },
+    {
+        "title": "Portfolio",
+        "directory": "`${__dirname}/../portfolio"
+    },
+    {
+        "title": "F.U.N. Song Lyrics",
+        "directory": "`${__dirname}/../fun_song"
     }
 ]
