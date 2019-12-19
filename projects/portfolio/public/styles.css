@@ -39,6 +39,6 @@ img {
 
 footer {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
-    margin-top: 50px;
+    margin: 50px 0 30px 30px;
     padding-top: 10px;
 }
