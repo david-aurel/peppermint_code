@@ -10,7 +10,7 @@ app.set('view engine', 'handlebars');
 
 // serves static files
 app.use(express.static(__dirname + '/../'));
-app.use(express.static('/public'));
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.render('home', {
@@ -19,13 +19,6 @@ app.get('/', (req, res) => {
         layout: 'main',
         // sending data to the front (home template)
         projects
-    });
-});
-
-app.get('/about', (req, res) => {
-    res.render('about', {
-        layout: 'main',
-        emojis: ['🤠', '🤖', '🧞‍♂️', '🧀', '🌮']
     });
 });
 
