@@ -1,50 +1,50 @@
 [
     {
         "title": "Connect Four",
-        "directory": "`${__dirname}/../connect_four"
+        "directory": "connect_four"
     },
     {
         "title": "GitHub API",
-        "directory": "`${__dirname}/../github_api"
+        "directory": "github_api"
     },
     {
         "title": "Carousel",
-        "directory": "`${__dirname}/../kitty_carousel"
+        "directory": "kitty_carousel"
     },
     {
         "title": "Spotify Search",
-        "directory": "`${__dirname}/../spotify_search"
+        "directory": "spotify_search"
     },
     {
         "title": "Reichstag Page",
-        "directory": "`${__dirname}/../reichstag"
+        "directory": "reichstag"
     },
     {
         "title": "Incremental Search",
-        "directory": "`${__dirname}/../incremental_search"
+        "directory": "incremental_search"
     },
     {
         "title": "JSON Validation",
-        "directory": "`${__dirname}/../json_validation"
+        "directory": "json_validation"
     },
     {
         "title": "Racing Game",
-        "directory": "`${__dirname}/../racing_demo"
+        "directory": "racing_demo"
     },
     {
         "title": "Panes",
-        "directory": "`${__dirname}/../panes"
+        "directory": "panes"
     },
     {
         "title": "Ticker",
-        "directory": "`${__dirname}/../ticker"
+        "directory": "ticker"
     },
     {
         "title": "Portfolio",
-        "directory": "`${__dirname}/../portfolio"
+        "directory": "portfolio"
     },
     {
         "title": "F.U.N. Song Lyrics",
-        "directory": "`${__dirname}/../fun_song"
+        "directory": "fun_song"
     }
 ]
