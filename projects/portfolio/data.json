@@ -46,5 +46,9 @@
     {
         "title": "F.U.N. Song Lyrics",
         "directory": "fun_song"
+    },
+    {
+        "title": "Canvas Drawing",
+        "directory": "canvas"
     }
 ]
