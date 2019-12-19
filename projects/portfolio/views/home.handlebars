@@ -1,11 +1,10 @@
 <h2>Projects:</h2>
 
-<ul>
-    {{#projects}}
-    <li>
-        <a href="{{directory}}">
-            {{title}}
-        </a>
-        {{/projects}}
-    </li>
-</ul>
+{{#projects}}
+<div>
+    <img src="/{{directory}}/screenshot.jpeg" alt="{{title}} screenshot">
+    <a href="/{{directory}}">
+        {{title}}
+    </a>
+</div>
+{{/projects}}
