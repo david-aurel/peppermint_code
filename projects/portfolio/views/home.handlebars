@@ -1,8 +1,11 @@
-<h1>This is the home template</h1>
-<h2>Hi {{cohort}}!</h2>
+<h2>Projects:</h2>
 
-<h3>Teachers:
-    {{#teachers}}
-    {{name}},
-    {{/teachers}}
-</h3>
+<ul>
+    {{#projects}}
+    <li>
+        <a href="{{directory}}">
+            {{title}}
+        </a>
+        {{/projects}}
+    </li>
+</ul>
