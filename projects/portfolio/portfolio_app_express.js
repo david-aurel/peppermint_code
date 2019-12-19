@@ -46,7 +46,9 @@ app.use(function cookieCheck(req, res, next) {
     if (req.cookies.cookiesAccepted) {
         next();
     } else {
-        res.cookie('url', req.url);
+        if (!req.cookies.url) {
+            res.cookie('url', req.url);
+        }
         res.redirect('/cookies');
     }
 });
