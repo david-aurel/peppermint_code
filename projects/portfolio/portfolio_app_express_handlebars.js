@@ -12,6 +12,10 @@ app.set('view engine', 'handlebars');
 app.use(express.static(__dirname + '/../'));
 app.use(express.static('public'));
 
+app.get('/portfolio', (req, res) => {
+    res.redirect('/');
+});
+
 app.get('/', (req, res) => {
     res.render('home', {
         //if it's called 'main' and in /views, you could leave this out
