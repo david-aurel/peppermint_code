@@ -1,6 +1,20 @@
 const express = require('express'),
     app = express(),
-    cookieParser = require('cookie-parser');
+    cookieParser = require('cookie-parser'),
+    basicAuth = require('basic-auth');
+
+const auth = function(req, res, next) {
+    const creds = basicAuth(req);
+    if (!creds || creds.name != 'name' || creds.pass != 'pass') {
+        res.setHeader(
+            'WWW-Authenticate',
+            'Basic realm= Enter your credentials'
+        );
+        res.sendStatus(401);
+    } else {
+        next();
+    }
+};
 
 app.use(cookieParser());
 
@@ -36,6 +50,8 @@ app.use(function cookieCheck(req, res, next) {
         res.redirect('/cookies');
     }
 });
+
+app.use('/spotify_search', auth);
 
 app.use(express.static(__dirname + '/../'));
 
