@@ -13,6 +13,7 @@
 }
 
 .container.description {
+    width: 100%;
     flex-direction: column;
     margin-left: 30px;
 }
@@ -27,7 +28,7 @@
     margin: 20px 30px;
 }
 
-h1 {
+#title {
     margin: 50px 0px 40px 30px;
 }
 a {
@@ -46,8 +47,37 @@ img {
     padding: 15px;
 }
 
+img.description {
+    height: auto;
+}
+
 footer {
     border-top: 1px solid rgba(0, 0, 0, 0.2);
     margin: 50px 0 30px 30px;
     padding-top: 10px;
+}
+
+.descriptionItem {
+    width: 100%;
+    max-width: 800px;
+    padding-right: 100px;
+}
+
+.descriptionWrapper {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+}
+
+@media (max-width: 650px) {
+    .descriptionWrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-row-gap: 50px;
+    }
+
+    .descriptionItem {
+        grid-row-start: 1;
+        padding-left: 30px;
+    }
 }
