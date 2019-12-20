@@ -22,8 +22,22 @@ app.get('/', (req, res) => {
         //set it to 'layout: null' if you dont want to use a layout
         layout: 'main',
         // sending data to the front (home template)
-        projects
+        projects,
+        helpers: {
+            exclaim(text) {
+                return text + '!!!!!!!!!!';
+            }
+        }
     });
+});
+
+app.get('/projects/:project', (req, res) => {
+    const project = req.params.project,
+        selectedProject = projects.find(item => item.directory == project);
+    if (!selectedProject) {
+        return res.sendStatus(404);
+    }
+    res.send(selectedProject.title);
 });
 
 app.listen(8080, () => console.log('listening...'));
