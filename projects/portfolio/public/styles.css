@@ -6,14 +6,23 @@
 .container {
     width: 100vw;
     display: flex;
-    flex-wrap: wrap;
     justify-content: left;
+}
+.container.welcome {
+    flex-wrap: wrap;
+}
+
+.container.description {
+    flex-direction: column;
+    margin-left: 30px;
 }
 
 .project {
     width: 330px;
     display: flex;
     flex-direction: column;
+}
+.project.welcome {
     align-items: center;
     margin: 20px 30px;
 }

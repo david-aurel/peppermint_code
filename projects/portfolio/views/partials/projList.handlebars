@@ -1,0 +1,26 @@
+{{#if description}}
+<div class="container description">
+    {{#projects}}
+    <div class="project description">
+        <a href="{{directory}}">
+            {{title}}
+        </a>
+    </div>
+    {{/projects}}
+</div>
+
+
+{{else}}
+
+<div class="container welcome">
+    {{#projects}}
+    <div class="project welcome">
+        <a href="projects/{{directory}}">
+            <img src="/{{directory}}/screenshot.jpeg" alt="{{title}} screenshot">
+            {{title}}
+        </a>
+    </div>
+    {{/projects}}
+</div>
+
+{{/if}}

@@ -34,6 +34,7 @@ app.get('/', (req, res) => {
 app.get('/projects/:project', (req, res) => {
     const project = req.params.project,
         selectedProject = projects.find(item => item.directory == project);
+
     if (!selectedProject) {
         return res.sendStatus(404);
     }
