@@ -40,7 +40,16 @@ app.get('/projects/:project', (req, res) => {
     }
     res.render('description', {
         selectedProject,
-        projects
+        projects,
+        helpers: {
+            highlight(projects, item) {
+                for (let i = 0; i < projects.length; i++) {
+                    if (projects.title[i] === item.title) {
+                        console.log('highlight');
+                    }
+                }
+            }
+        }
     });
 });
 
