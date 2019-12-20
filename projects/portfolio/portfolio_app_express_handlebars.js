@@ -37,7 +37,10 @@ app.get('/projects/:project', (req, res) => {
     if (!selectedProject) {
         return res.sendStatus(404);
     }
-    res.send(selectedProject.title);
+    res.render('description', {
+        selectedProject,
+        projects
+    });
 });
 
 app.listen(8080, () => console.log('listening...'));
