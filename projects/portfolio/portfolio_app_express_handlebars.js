@@ -42,11 +42,9 @@ app.get('/projects/:project', (req, res) => {
         selectedProject,
         projects,
         helpers: {
-            highlight(projects, item) {
-                for (let i = 0; i < projects.length; i++) {
-                    if (projects.title[i] === item.title) {
-                        console.log('highlight');
-                    }
+            highlight(obj) {
+                if (obj === selectedProject.title) {
+                    return 'highlighted';
                 }
             }
         }

@@ -1,15 +1,13 @@
 {{#if description}}
 <div class="container description">
     {{#projects}}
-    <div class="project description">
+    <div class="project description {{highlight title}}">
         <a href="{{directory}}">
             {{title}}
         </a>
     </div>
     {{/projects}}
 </div>
-
-{{highlight(projects, selectedProject)}}
 
 
 
