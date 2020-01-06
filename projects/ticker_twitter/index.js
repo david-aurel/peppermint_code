@@ -16,7 +16,7 @@ app.get('/links.json', (req, res) => {
     //1. We want to get a bearerToken from twitter
     getToken(function(err, bearerToken) {
         if (err) {
-            console.log(`error in getToken(): ${err}`);
+            console.log(`error in getToken():`, err);
             return;
         }
         //2. When we have the token, make a request for tweets
@@ -24,7 +24,7 @@ app.get('/links.json', (req, res) => {
 
         getTweets(bearerToken, function(err, tweets) {
             if (err) {
-                console.log(`error in getTweets(): ${err}`);
+                console.log(`error in getTweets()`, err);
                 return;
             }
         });

@@ -1,11 +1,10 @@
 const secrets = require(`${__dirname}/secrets`);
 const https = require('https');
 
-//getToken() takes a callback function as an argument. The callback will be logToken(). It will run, after getToken() is finished, because of the nature of callbacks.
 module.exports.getToken = function(callback) {
     console.log('this function gets the bearerToken from twitter');
 
-    let creds = `${secrets.consumerKey}: ${secrets.consumerSecret}`,
+    let creds = `${secrets.consumerKey}:${secrets.consumerSecret}`,
         encodedCreds = Buffer.from(creds).toString('base64');
 
     const options = {
