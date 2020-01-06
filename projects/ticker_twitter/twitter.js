@@ -33,9 +33,8 @@ module.exports.getToken = function(callback) {
         });
 
         response.on('end', function() {
-            console.log(`body: ${body}`);
             let parsedBody = JSON.parse(body);
-            console.log(`parsedBody: ${parsedBody}`);
+            console.log(`getTweets bearerToken: ${parsedBody.access_token}`);
 
             //null is the error, and then the access token
             callback(null, parsedBody.access_token);
@@ -49,6 +48,39 @@ module.exports.getToken = function(callback) {
 
 module.exports.getTweets = function(bearerToken, callback) {
     console.log('this function gets tweets from twitter api');
+    const options = {
+        host: 'api.twitter.com',
+        path:
+            '/1.1/statuses/user_timeline.json?screen_name=bbc&tweet_mode=extended',
+        method: 'GET',
+        headers: {
+            Authorization: 'Bearer ' + bearerToken
+        }
+    };
+
+    const cb = function(response) {
+        console.log(`response: ${response.statusCode}`);
+        if (response.statusCode !== 200) {
+            //this means something went wrong
+            callback(response.statusCode);
+            return;
+        }
+
+        var body = '';
+        response.on('data', function(chunk) {
+            body += chunk;
+        });
+
+        response.on('end', function() {
+            let parsedBody = JSON.parse(body);
+
+            //null is the error, and then tweets
+            callback(null, parsedBody);
+        });
+    };
+
+    const req = https.request(options, cb);
+    req.end();
 };
 module.exports.filterTweets = function(tweets) {
     console.log('this function filters the response from twitter');
