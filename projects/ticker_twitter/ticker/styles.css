@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    position: relative;
+}
+
+.ticker {
+    position: relative;
+    border: 1px solid black;
+    overflow-x: hidden;
+    height: 1.5em;
+    top: 30px;
+}
+
+.headlines {
+    position: absolute;
+    left: 100%;
+    white-space: nowrap;
+}
+
+a {
+    margin-right: 20px;
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: blue;
+    text-decoration: underline;
+}
+
+/* ticker2 */
+.ticker2 {
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    border: 1px solid black;
+    overflow-x: hidden;
+    height: 1.5em;
+}
+
+.headlines2 {
+    position: absolute;
+    right: 0%;
+    white-space: nowrap;
+}
+
+.headlines2 a {
+    margin-right: 30px;
+}
