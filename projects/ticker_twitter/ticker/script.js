@@ -1,7 +1,7 @@
 (() => {
     // ajax
     $.ajax({
-        url: 'links.json',
+        url: '/links.json',
         success: function(data) {
             console.log(data);
             let linkHtml = '';
