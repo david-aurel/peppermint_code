@@ -23,18 +23,15 @@ app.get('/links.json', (req, res) => {
         console.log(`in index.js, about to call getTweets()`);
 
         getTweets(bearerToken, function(err, tweets) {
-            console.log('here');
-
             if (err) {
                 console.log(`error in getTweets()`, err);
                 return;
             }
             //3. We then want to filter the data (make it look like our old links.json)
             const filteredTweets = filterTweets(tweets);
+            // 4. Send back those filtered tweets as JSON
+            res.json(filteredTweets);
         });
-
-        //4. Send back those filtered tweets as JSON
-        // res.json(filteredTweets);
     });
 });
 

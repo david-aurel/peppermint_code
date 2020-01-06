@@ -82,6 +82,22 @@ module.exports.getTweets = function(bearerToken, callback) {
     const req = https.request(options, cb);
     req.end();
 };
+
 module.exports.filterTweets = function(tweets) {
     console.log('this function filters the response from twitter');
+
+    let filteredTweets = [];
+
+    for (let i = 0; i < tweets.length; i++) {
+        let href = tweets[i].entities.urls;
+        let text = tweets[i].full_text;
+
+        if (href.length > 0) {
+            filteredTweets.push({
+                href: href[0].url,
+                text: text
+            });
+        }
+    }
+    return filteredTweets;
 };
