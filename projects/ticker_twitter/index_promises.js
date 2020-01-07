@@ -15,12 +15,16 @@ app.get('/links.json', (req, res) => {
     //1. We want to get a bearerToken from twitter
     getToken().then(bearerToken => {
         //2. When we have the token, make a request for tweets
-        getTweets(bearerToken).then(tweets => {
-            //3. We then want to filter the data (make it look like our old links.json)
-            const filteredTweets = filterTweets(tweets);
-            // 4. Send back those filtered tweets as JSON
-            res.json(filteredTweets);
-        });
+        getTweets(bearerToken)
+            .then(tweets => {
+                //3. We then want to filter the data (make it look like our old links.json)
+                const filteredTweets = filterTweets(tweets);
+                // 4. Send back those filtered tweets as JSON
+                res.json(filteredTweets);
+            })
+            .catch(err => {
+                console.log(`ERROR: ${err}`);
+            });
     });
 });
 
