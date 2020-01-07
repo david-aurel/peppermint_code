@@ -13,9 +13,9 @@ app.get('/links.json', (req, res) => {
     console.log('a request was made for /links.json');
 
     //1. We want to get a bearerToken from twitter
-    getToken().then(bearerToken => {
+    getToken().then(token => {
         //2. When we have the token, make a request for tweets
-        getTweets(bearerToken)
+        return getTweets(token)
             .then(tweets => {
                 //3. We then want to filter the data (make it look like our old links.json)
                 const filteredTweets = filterTweets(tweets);
