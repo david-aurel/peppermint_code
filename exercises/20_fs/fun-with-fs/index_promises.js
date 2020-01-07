@@ -1,11 +1,15 @@
-const { readdir, stat } = require('fs').promises,
+let { readdir, stat } = require('fs').promises,
+    { promisify } = require('util'),
     fs = require('fs'),
     myPath = __dirname,
     filesPath = myPath + '/files';
 
+let logPromisified = promisify(logSizes);
+
 // Part 1 using promises instead of callbacks
+
 function logSizes(path) {
-    readdir(path, { withFileTypes: true }).then(files => {
+    return readdir(path, { withFileTypes: true }).then(files => {
         for (let i in files) {
             let elementPath = `${path}/${files[i].name}`;
             if (files[i].isFile()) {
@@ -19,8 +23,7 @@ function logSizes(path) {
     });
 }
 
-logSizes(filesPath);
-
+logPromisified(filesPath).then(console.log('done'));
 // Part 2
 
 function mapSizes(path) {
