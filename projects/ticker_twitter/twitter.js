@@ -46,12 +46,11 @@ module.exports.getToken = function(callback) {
     req.end('grant_type=client_credentials');
 };
 
-module.exports.getTweets = function(bearerToken, callback) {
+module.exports.getTweets = function(bearerToken, user, callback) {
     console.log('this function gets tweets from twitter api');
     const options = {
         host: 'api.twitter.com',
-        path:
-            '/1.1/statuses/user_timeline.json?screen_name=bbc&tweet_mode=extended',
+        path: `/1.1/statuses/user_timeline.json?screen_name=${user}&tweet_mode=extended`,
         method: 'GET',
         headers: {
             Authorization: 'Bearer ' + bearerToken
@@ -91,11 +90,12 @@ module.exports.filterTweets = function(tweets) {
     for (let i = 0; i < tweets.length; i++) {
         let href = tweets[i].entities.urls;
         let text = tweets[i].full_text;
+        let user = tweets[i].user.screen_name;
 
         if (href.length > 0) {
             filteredTweets.push({
                 href: href[0].url,
-                text: text
+                text: `${text} (${user})`
             });
         }
     }
