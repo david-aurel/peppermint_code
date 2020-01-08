@@ -1,45 +1,23 @@
-let { readdir, stat } = require('fs').promises,
-    { promisify } = require('util'),
-    fs = require('fs'),
-    myPath = __dirname,
-    filesPath = myPath + '/files';
+const fs = require('fs');
 
-let logPromisified = promisify(logSizes);
-
-// Part 1 using promises instead of callbacks
+logSizes(`${__dirname}/files`).then(() => console.log('done!'));
 
 function logSizes(path) {
-    return readdir(path, { withFileTypes: true }).then(files => {
-        for (let i in files) {
-            let elementPath = `${path}/${files[i].name}`;
+    return fs.promises.readdir(path, { withFileTypes: true }).then(files => {
+        const promises = [];
+        for (let i = 0; i < files.length; i++) {
+            const nextPath = `${path}/${files[i].name}`;
+            if (files[i].isDirectory()) {
+                promises.push(logSizes(nextPath));
+            }
             if (files[i].isFile()) {
-                stat(elementPath).then(stats =>
-                    console.log(`${elementPath}: ${stats.size}`)
+                promises.push(
+                    fs.promises.stat(nextPath).then(stats => {
+                        console.log(`${nextPath}: ${stats.size}`);
+                    })
                 );
-            } else {
-                logSizes(elementPath);
             }
         }
+        return Promise.all(promises);
     });
 }
-
-logPromisified(filesPath).then(console.log('done'));
-// Part 2
-
-function mapSizes(path) {
-    let files = fs.readdirSync(path, { withFileTypes: true }),
-        filesMap = {};
-    for (let i in files) {
-        let elementPath = `${path}/${files[i].name}`,
-            elementName = `${files[i].name}`;
-        if (files[i].isFile()) {
-            filesMap[elementName] = fs.statSync(elementPath).size;
-        } else {
-            filesMap[elementName] = mapSizes(elementPath);
-        }
-    }
-    return filesMap;
-}
-
-let mapSizesJSON = JSON.stringify(mapSizes(filesPath), null, 4);
-fs.writeFileSync(`${myPath}/files.json`, mapSizesJSON);
