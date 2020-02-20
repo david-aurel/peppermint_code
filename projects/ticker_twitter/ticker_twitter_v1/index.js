@@ -2,11 +2,7 @@ const express = require('express'),
     app = express(),
     PORT = 8080;
 
-const {
-    getToken,
-    getTweets,
-    filterTweets
-} = require(`${__dirname}/twitter.js`);
+const { getToken, getTweets, filterTweets } = require(`${__dirname}/twApi.js`);
 
 app.use(express.static(`${__dirname}/ticker`));
 

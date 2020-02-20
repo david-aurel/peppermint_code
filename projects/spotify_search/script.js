@@ -79,6 +79,7 @@
             );
     }
 
+    // activate infinite scroll by visiting for example http://127.0.0.1:8080/?scroll=infinite
     function infiniteScroll() {
         // calculate bottom page by pageheight - scroll + windowheight
         var pageBottom =

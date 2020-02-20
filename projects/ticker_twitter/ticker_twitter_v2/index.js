@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const headlines = require('./headlines');
 
-app.get('/headlines', function(req, res) {
+app.get('/links.json', function(req, res) {
     headlines()
         .then(function(headlines) {
             res.json(headlines);
