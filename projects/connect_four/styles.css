@@ -78,21 +78,33 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
     width: 100%;
-    padding: 0 50px;
 }
 
-.info {
+.resetWrapper,
+.playerDisplay,
+.score {
+    margin: 20px;
 }
-
+.resetWrapper,
+.reset {
+    width: 80px;
+    height: 80px;
+}
+.resetWrapper {
+    display: inline-block;
+    border-radius: 50%;
+    order: 1;
+}
 .reset {
     display: inline-block;
     border-radius: 50%;
     cursor: pointer;
     font-size: 2.5rem;
-    width: 80px;
-    height: 80px;
-    background: white;
+    mask: url(redo-alt-solid.svg) center / 60% no-repeat;
+    -webkit-mask: url(redo-alt-solid.svg) center / 60% no-repeat;
 }
 
 .player1Logo,
@@ -105,7 +117,6 @@ body {
 .player2Display {
     display: flex;
     align-items: center;
-    width: 250px;
     height: 50px;
     margin-bottom: 10px;
     font-family: 'Roboto', sans-serif;
@@ -153,10 +164,6 @@ body {
     font-weight: bold;
 }
 
-.playerDisplay {
-    margin: 60px 0 50px 0;
-}
-
 @media (min-width: 900px) {
     body {
         flex-direction: row;
@@ -164,8 +171,16 @@ body {
 
     #sidebar {
         flex-direction: column;
-        justify-content: space-between;
+        align-items: flex-start;
         padding: 0 0 0 100px;
         width: auto;
+    }
+    .info {
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+    .resetWrapper {
+        order: 0;
     }
 }

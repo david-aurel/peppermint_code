@@ -7,10 +7,11 @@ body {
     border: 1px solid #8181b1;
 }
 
+.resetWrapper {
+    background-color: #4f4f84;
+}
 .reset {
-    color: white;
-    background: rgba(255, 255, 255, 0.219);
-    border: none;
+    background-color: white;
 }
 
 .player1,

@@ -2,9 +2,11 @@
     background: #5260ff;
 }
 
+.resetWrapper {
+    background-color: #d6d6ff;
+}
 .reset {
-    color: #5260ff;
-    border: 3px solid #5260ff;
+    background-color: #5260ff;
 }
 
 .score {
