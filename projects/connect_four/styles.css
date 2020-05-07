@@ -1,24 +1,34 @@
 * {
     box-sizing: border-box;
 }
-.board {
-    margin-top: 50px;
+/* general */
+body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    height: 450px;
+    align-items: center;
+}
+
+/* board */
+.board {
+    display: flex;
+    justify-content: space-between;
+    max-width: 530px;
 }
 
 .slot {
-    width: 80px;
-    height: 80px;
+    width: 14vw;
+    height: 14vw;
+    max-width: 80px;
+    max-height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .hole {
-    width: 14px;
-    height: 14px;
+    width: 20%;
+    height: 20%;
     border-radius: 50%;
     transition: 0.5s;
     /* transparent with overflow border (potentially useful for animations) */
@@ -38,8 +48,8 @@
 
 .player1,
 .player2 {
-    width: 50px;
-    height: 50px;
+    width: 65%;
+    height: 65%;
     transition: 0.2s;
 }
 .player1,
@@ -52,13 +62,8 @@
     background: #38a858;
 }
 
-/* .select .holes:last-of-type {
-    background: yellow;
-} */
-
 .select {
-    height: 25px;
-    width: 25px;
+    transform: scale(1.5);
     transition: 0.1s;
 }
 
@@ -67,19 +72,27 @@
     width: 30px;
 }
 
+/* score display */
+
+#sidebar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 50px;
+}
+
+.info {
+}
+
 .reset {
     display: inline-block;
     border-radius: 50%;
     cursor: pointer;
     font-size: 2.5rem;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     width: 80px;
     height: 80px;
-}
-
-.reset:focus {
-    outline: none;
+    background: white;
 }
 
 .player1Logo,
@@ -99,15 +112,6 @@
     font-size: 1.6em;
     font-weight: bold;
     transition: 0.3s;
-}
-
-#sidebar {
-    margin-left: 50px;
-    height: 100%;
-    margin-top: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
 .player1Logo,
@@ -151,4 +155,17 @@
 
 .playerDisplay {
     margin: 60px 0 50px 0;
+}
+
+@media (min-width: 900px) {
+    body {
+        flex-direction: row;
+    }
+
+    #sidebar {
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0 0 0 100px;
+        width: auto;
+    }
 }
