@@ -6,21 +6,19 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
 }
 
 /* board */
 .board {
     display: flex;
     justify-content: space-between;
-    max-width: 530px;
 }
 
 .slot {
     width: 14vw;
     height: 14vw;
-    max-width: 80px;
-    max-height: 80px;
+    max-width: 70px;
+    max-height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,8 +66,8 @@ body {
 }
 
 .lose {
-    height: 30px;
-    width: 30px;
+    height: 40%;
+    width: 40%;
 }
 
 /* score display */
@@ -81,6 +79,7 @@ body {
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+    padding-top: 20px;
 }
 
 .resetWrapper,
@@ -109,8 +108,8 @@ body {
 
 .player1Logo,
 .player2Logo {
-    height: 50px;
-    width: 50px;
+    min-height: 50px;
+    min-width: 50px;
 }
 
 .player1Display,
@@ -150,8 +149,8 @@ body {
 }
 .inactive .player1Logo,
 .inactive .player2Logo {
-    height: 40px;
-    width: 40px;
+    min-height: 40px;
+    min-width: 40px;
 }
 
 .inactive {
@@ -159,12 +158,12 @@ body {
 }
 
 .score {
-    font-size: 7em;
+    font-size: 5rem;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 740px) {
     body {
         flex-direction: row;
     }
@@ -172,7 +171,7 @@ body {
     #sidebar {
         flex-direction: column;
         align-items: flex-start;
-        padding: 0 0 0 100px;
+        padding: 0 0 0 50px;
         width: auto;
     }
     .info {
