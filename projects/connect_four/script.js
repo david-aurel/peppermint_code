@@ -1,21 +1,21 @@
-(() => {
+window.addEventListener('load', function () {
     var resetButton = $('.reset'),
         currentPlayer = 'player1',
         holes = $('.hole'),
         col = $('.column'),
         victory = false,
         p1Score = 0,
-        p2Score = 0,
-        stylesheet = localStorage.getItem('stylesheet');
+        p2Score = 0;
+    // stylesheet = localStorage.getItem('stylesheet');
 
     //column selection for mouse
-    col.on('click', function(e) {
+    col.on('click', function (e) {
         gameMove(e);
     });
 
     //column selection for keyboard and stylesheet switch
     function keydownEvents() {
-        $(document).on('keydown', function(e) {
+        $(document).on('keydown', function (e) {
             // if no hole has it, add selected class to first hole
             if (!holes.is('.select')) {
                 if (e.which === 39) {
@@ -85,7 +85,7 @@
 
     // select for mouse
     function select() {
-        col.on('mouseenter click', function() {
+        col.on('mouseenter click', function () {
             var element = $(this),
                 currentHolesArr = element
                     .children()
@@ -94,11 +94,11 @@
                     .not('.player2')
                     .last();
 
-            setTimeout(function() {
+            setTimeout(function () {
                 currentHolesArr.addClass('select');
             }, 1);
         });
-        col.on('mouseleave click', function() {
+        col.on('mouseleave click', function () {
             var element = $(this),
                 currentHolesArr = element.children().children();
 
@@ -108,7 +108,7 @@
     select();
 
     // reset button listener
-    resetButton.on('click', function() {
+    resetButton.on('click', function () {
         reset();
     });
 
@@ -118,9 +118,7 @@
         if (!enter) {
             col = $(e.currentTarget);
         } else {
-            col = $('.select')
-                .parent()
-                .parent();
+            col = $('.select').parent().parent();
         }
 
         var slotsInCol = col.children(),
@@ -133,12 +131,7 @@
             ) {
                 holesInCol.eq(i).addClass(currentPlayer);
                 holesInCol.eq(i).removeClass('select');
-                holesInCol
-                    .eq(i)
-                    .parent()
-                    .prev()
-                    .children()
-                    .addClass('select');
+                holesInCol.eq(i).parent().prev().children().addClass('select');
                 break;
             }
         }
@@ -186,7 +179,7 @@
                 count++;
                 winningPieces.push(slots.eq(i));
                 if (count == 4) {
-                    winningPieces.forEach(function(item) {
+                    winningPieces.forEach(function (item) {
                         item.addClass('win');
                     });
                     $('.player1:not(.win').addClass('lose');
@@ -194,10 +187,7 @@
                     $('.column').off('click');
                     $(document).off('keydown');
                     // resetButton.css({ visibility: 'visible' });
-                    holes
-                        .not('.player1')
-                        .not('.player2')
-                        .css({ opacity: 0.3 });
+                    holes.not('.player1').not('.player2').css({ opacity: 0.3 });
                     col.off();
                     victory = true;
                     return true;
@@ -215,15 +205,8 @@
         var winArr1 = $(),
             winArr2 = $();
         for (let i = 0; i < holes.length; i++) {
-            let row = holes
-                .eq(i)
-                .parent()
-                .index();
-            let col = holes
-                .eq(i)
-                .parent()
-                .parent()
-                .index();
+            let row = holes.eq(i).parent().index();
+            let col = holes.eq(i).parent().parent().index();
 
             //put all the item with the corresponding coordinates in an array and return it
             if (col - row == currentItemCoord) {
@@ -268,7 +251,7 @@
         $('.inactive').removeClass('inactive');
 
         $('.column').off();
-        $('.column').on('click', function(e) {
+        $('.column').on('click', function (e) {
             gameMove(e);
         });
         $(document).off('keydown');
@@ -280,15 +263,15 @@
     }
 
     // initialize stylesheet
-    function initTheme() {
-        if (!stylesheet) {
-            stylesheet == localStorage.setItem('stylesheet', 'light');
-        }
-        if (localStorage.getItem('stylesheet') == 'light') {
-            $('#toggleStylesheet').attr('href', 'light.css');
-        } else {
-            $('#toggleStylesheet').attr('href', 'dark.css');
-        }
-    }
-    initTheme();
-})();
+    // function initTheme() {
+    //     if (!stylesheet) {
+    //         stylesheet == localStorage.setItem('stylesheet', 'light');
+    //     }
+    //     if (localStorage.getItem('stylesheet') == 'light') {
+    //         $('#toggleStylesheet').attr('href', 'light.css');
+    //     } else {
+    //         $('#toggleStylesheet').attr('href', 'dark.css');
+    //     }
+    // }
+    // initTheme();
+});
