@@ -6,14 +6,9 @@
 
 **Classic two player connect four game, built in Javascript with jQuery.**
 
-This was my favorite project to make, ever! It was one of those weekends where I was so immersed I almost forgot to eat. There were a lot of challenging parts to this one, for example, figuring out when somebody's won diagonally! I wanted to make it as accessible as possible, so the game is fully playable using the keyboard. Something I'd like to add in the future is the functionality to make if fully playable using a screen reader and voice commands. I then spent a big amount of time styling it, which was also extremely rewarding, when it all came together in the end.
-
-
-
-**Features:**
 
 * Game logic for moving the pieces and determining when a win has occured using Javascript with jQuery.
-* Intuitive UX with CSS animations
+* Intuitive UI with CSS animations
 * Strong focus on accessibility
 
 
